@@ -11,14 +11,14 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = @budget.expenses.build
+    @expense = @budget.expenses.new
   end
 
   def edit
   end
 
   def create
-    @expense = @budget.expenses.build(expense_params)
+    @expense = @budget.expenses.new(expense_params)
     if @expense.save
       redirect_to [@budget, @expense], notice: "Expense was create."
     else
@@ -53,4 +53,4 @@ private
   def expense_params
     params.require(:expense).permit(:amount, :description, :date, :category_id)
   end
-end 
+end
