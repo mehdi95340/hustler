@@ -12,14 +12,14 @@ class BudgetsController < ApplicationController
     end
 
     def new
-      @budget = current_user.budgets.build
+      @budget = current_user.budgets.new
     end
 
     def edit
     end
 
     def create
-      @budget = current_user.budgets.build(budget_params)
+      @budget = current_user.budgets.new(budget_params)
       if @budget.save
         redirect_to @budget, notice: "Budget was create."
       else
@@ -49,4 +49,3 @@ class BudgetsController < ApplicationController
     end
   end
 end
-
