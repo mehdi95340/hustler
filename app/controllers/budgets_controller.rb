@@ -1,22 +1,21 @@
 class BudgetsController < ApplicationController
-    before_action :set_budget, only: [:show, :update, :edit, :destroy]
-    before_action :authenticate_user!
+  before_action :set_budget, only: [:show, :update, :edit, :destroy]
 
 
-    def index
-      @budgets = current_user.budgets
+  def index
+    @budgets = current_user.budgets
 
-    end
+  end
 
-    def show
-    end
+  def show
+  end
 
-    def new
-      @budget = current_user.budgets.new
-    end
+  def new
+    @budget = current_user.budgets.new
+  end
 
-    def edit
-    end
+  def edit
+  end
 
    def create
     @budget = Budget.new(budget_params)
@@ -49,6 +48,7 @@ class BudgetsController < ApplicationController
       def budget_params
         params.require(:budget).permit(:total_amount, :month)
       end
+
 end
 # def create
 # @budget = current_user.budgets.new(budget_params)
