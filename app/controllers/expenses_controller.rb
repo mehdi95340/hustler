@@ -5,6 +5,8 @@ class ExpensesController < ApplicationController
 
   def index
     @expenses = @budget.expenses
+   # @categories = @budget.categories
+    @budgets = Budget.all
   end
 
   def show
