@@ -3,6 +3,11 @@ class PagesController < ApplicationController
 
   def home
   end
+  
+  def dashboard
+    @budgets = currents_user.budgets
+    @expenses = Expense.all
+  end
 
   def actions
   end
