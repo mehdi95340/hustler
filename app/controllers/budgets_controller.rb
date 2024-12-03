@@ -3,8 +3,8 @@ class BudgetsController < ApplicationController
 
 
   def index
-    @budgets = current_user.budgets
-
+   # @budgets = current_user.budgets
+   @budgets = Budget.all
   end
 
   def show

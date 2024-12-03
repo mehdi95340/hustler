@@ -1,0 +1,9 @@
+<div class =container>
+<h1> <%= @budget.month %></h1>
+<% @expenses.each do |expense|%>
+    <%= expense.category.name %>
+   <p>$ <%= expense.amount %></p>
+    <%= expense.description %>
+    <%= expense.date %>
+    <% end %>
+</div>
