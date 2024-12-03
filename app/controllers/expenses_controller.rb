@@ -18,7 +18,12 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = @budget.expenses.new(expense_params)
+    # @expense = @budget.expenses.new(expense_params)
+    @expense = Expense.new(expense_params)
+    @budget = Budget.find(params[:budget_id])
+    
+    @expense.budget = @budget
+
     if @expense.save
       redirect_to [@budget, @expense], notice: "Expense was create."
     else

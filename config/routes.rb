@@ -5,13 +5,12 @@ Rails.application.routes.draw do
     resources :expenses
   end
 
-
   resources :categories
 
   get 'dashboard', to: 'pages#dashboard'
   get 'allexpenses', to: 'expenses#all_expenses'
   get 'categories/:categoriy_id/expenses', to: 'expenses#category_expenses'
-  get ' budget/:id/track', to: 'categories#track'
+  get 'budgets/:id/track', to: 'budgets#track'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
