@@ -11,21 +11,18 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = @budget.expenses.new
+    @budget = Budget.find(params[:budget_id])
+    @expense = Expense.new
   end
 
   def edit
   end
 
   def create
-    # @expense = @budget.expenses.new(expense_params)
     @expense = Expense.new(expense_params)
-    @budget = Budget.find(params[:budget_id])
-    
     @expense.budget = @budget
-
     if @expense.save
-      redirect_to [@budget, @expense], notice: "Expense was create."
+      redirect_to root_path, notice: "🤑"
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,16 +33,16 @@ class ExpensesController < ApplicationController
       redirect_to [@budget, @expense], notice: "Expense was updated."
     else
       render :edit, status: :unprocessable_entity
+    end
   end
-end
 
-def destroy
-  @expense.destroy
-  redirect_to budget_expenses_url(@budget), notice: "Expense was destroyed."
-end
+  def destroy
+    @expense.destroy
+    redirect_to budget_expenses_url(@budget), notice: "Expense was destroyed."
+  end
 
 
-private
+  private
 
   def set_expense
     @expense = Expense.find(params[:id])
