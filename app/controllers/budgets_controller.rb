@@ -17,14 +17,16 @@ class BudgetsController < ApplicationController
   def edit
   end
 
-  def create
-    @budget = current_user.budgets.new(budget_params)
-    if @budget.save
-      redirect_to @budget, notice: "Budget was create."
+   def create
+    @budget = Budget.new(budget_params)
+    @budget.user = current_user
+    if @budget.save!
+      redirect_to budget_path(@budget),notice: "Budget was create."
     else
-      render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     if @budget.update(budget_params)
@@ -32,18 +34,27 @@ class BudgetsController < ApplicationController
     end
   end
 
-  def destroy
-    @budget.destroy
-    redirect_to budget_url, notice: "budget was destroy"
-  end
+      def destroy
+        @budget.destroy
+        redirect_to budget_url, notice: "budget was destroy"
+      end
 
-  private
+      private
 
-  def set_budget
-    @budget = Budget.find(params[:id])
-  end
+      def set_budget
+        @budget = current_user.budgets.find(params[:id])
+      end
 
-  def budget_params
-    params.require(:budget).permit(:total_amount, :month)
-  end
+      def budget_params
+        params.require(:budget).permit(:total_amount, :month)
+      end
+
 end
+# def create
+# @budget = current_user.budgets.new(budget_params)
+#if @budget.save
+# redirect_to @budget, notice: "Budget was create."
+# else
+#  render :new, status: :unprocessable_entity
+#end
+#end
