@@ -24,7 +24,10 @@ class CategoriesController < ApplicationController
       end
     end
 
-
+  #   <div class="field">
+  #   <%= form.label :description %>
+  #   <%= form.text_field :description %>
+  # </div>
 
       def update
         if @category.update(category_params)
