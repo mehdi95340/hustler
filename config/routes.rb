@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  resources :categories, only: [:new, :create]
   resources :budgets do
     resources :expenses
   end
