@@ -4,6 +4,9 @@
    <p>TOTAL EXPENSES:<%= @budget.total_expenses %></p>
   <h1>for <%= @budget.month %></h1>
   <p><%= @budget.weekly_expenses %></p>
-  <p>EXPENSES BY CATEGORY: <%=  %></p>
+  <p>EXPENSES BY CATEGORY:</p>
+  <% @budget.expenses_by_category.each do |category, total| %>
+  <%= category.name %> <%= number_to_currency(total) %>
+  <% end %>
   </div>
 </div>
