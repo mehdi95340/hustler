@@ -1,6 +1,7 @@
 class Budget < ApplicationRecord
   belongs_to :user
   has_many :expenses
+  has_many :categories, through: :expenses
 
   enum month: %i[january february march april may june july august september october november december]
 
