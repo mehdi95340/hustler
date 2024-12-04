@@ -29,4 +29,14 @@ class Budget < ApplicationRecord
     end
     return sum
   end
+
+  def remaining_budget
+    total_amount - total_expenses
+  end
+
+  def weekly_expenses
+    expenses.select {|expense| expense.date.strftime('%V').to_i == Date.today.strftime('%V').to_i}.map {|expense| expense.amount}.sum
+  end
+
+  def expenses_by_category
 end

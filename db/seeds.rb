@@ -30,7 +30,7 @@ users = [
    { name: "Subscriptions Digital..."},
    { name: "Spaceships Cars..."},
    { name: "Ice Jewels..."},
-   {name: "Drip Clothes..."},
+   { name: "Drip Clothes..."},
   ]
 
   categories.each do |categories_attributes|
