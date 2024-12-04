@@ -39,4 +39,6 @@ class Budget < ApplicationRecord
   end
 
   def expenses_by_category
+    expenses.group(:category).sum(:amount)
+  end
 end
