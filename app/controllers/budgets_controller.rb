@@ -37,6 +37,7 @@ class BudgetsController < ApplicationController
     redirect_to budget_url, notice: "budget was destroy"
   end
 
+
   private
 
   def set_budget

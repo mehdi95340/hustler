@@ -1,11 +1,9 @@
 <div class="container">
   <div class="chart">
-   <p>BUDGET:<%= @budget.total_amount - @budget.total_expenses %></p>
-<h1>Budget for <%= @budget.month %></h1>
-  </div>
-  <div class="action-div">
-   <div class="action-btn">
-    <%= link_to "ACTIONS", actions_path %>
-   </div>
+   <p>BUDGET:<%= @budget.remaining_budget %></p>
+   <p>TOTAL EXPENSES:<%= @budget.total_expenses %></p>
+  <h1>for <%= @budget.month %></h1>
+  <p><%= @budget.weekly_expenses %></p>
+  <p>EXPENSES BY CATEGORY: <%=  %></p>
   </div>
 </div>
