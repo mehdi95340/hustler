@@ -22,15 +22,15 @@ users = [
   Budget.create!(budget_attributes)
  end
  categories = [
-   { name: "Entertainment" },
-   { name: "Restaurant" },
-   { name: "Groceries"},
-   { name: "Transport"},
-   { name: "Personal Care"},
-   { name: "Subscriptions Digital..."},
-   { name: "Spaceships Cars..."},
-   { name: "Ice Jewels..."},
-   { name: "Drip Clothes..."},
+   { name: "Entertainment", user_id: User.all.sample.id },
+   { name: "Restaurant", user_id: User.all.sample.id  },
+   { name: "Groceries", user_id: User.all.sample.id },
+   { name: "Transport", user_id: User.all.sample.id },
+   { name: "Personal Care", user_id: User.all.sample.id },
+   { name: "Subscriptions Digital...", user_id: User.all.sample.id },
+   { name: "Spaceships Cars...", user_id: User.all.sample.id },
+   { name: "Ice Jewels...", user_id: User.all.sample.id },
+   { name: "Drip Clothes...", user_id: User.all.sample.id },
   ]
 
   categories.each do |categories_attributes|
