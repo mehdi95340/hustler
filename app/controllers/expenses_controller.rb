@@ -18,6 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    @expense = Expense.find(params[:id])
   end
 
   def create

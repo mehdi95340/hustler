@@ -23,4 +23,8 @@
 </div>
 <% end %>
 
+<%= link_to "Delete",
+  category_path(@category),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
 <%= link_to "Back", categories_path %>
