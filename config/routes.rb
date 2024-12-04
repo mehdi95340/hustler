@@ -2,14 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories, only: [:new, :create]
   resources :budgets do
-    resources :expenses
+    resources :expenses, only: [:new, :create, :index]
   end
+
+  resources :expenses, only: [:show, :destroy]
 
   resources :categories
 
   get 'dashboard', to: 'pages#dashboard'
   get 'allexpenses', to: 'expenses#all_expenses'
-  get 'categories/:categoriy_id/expenses', to: 'expenses#category_expenses'
+  get 'categories/:category_id/expenses', to: 'expenses#category_expenses'
   get 'budgets/:id/track', to: 'budgets#track'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

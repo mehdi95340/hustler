@@ -5,10 +5,10 @@
    <p>$ <%= expense.amount %></p>
     <%= expense.description %>
     <%= expense.date %>
-    <% end %>
-
     <%= link_to "Delete",
-  expenses_path(@expenses),
+  expense_path(expense),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
+    <% end %>
+
 </div>
