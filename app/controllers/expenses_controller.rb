@@ -23,7 +23,8 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.budget = @budget
-    if @expense.save
+    @expense.date = Date.today
+    if @expense.save!
       redirect_to root_path, notice: "🤑"
     else
       render :new, status: :unprocessable_entity
