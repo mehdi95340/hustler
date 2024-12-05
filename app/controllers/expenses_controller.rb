@@ -18,6 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    @expense = Expense.find(params[:id])
   end
 
   def create
@@ -25,7 +26,7 @@ class ExpensesController < ApplicationController
     @expense.budget = @budget
     @expense.date = Date.today
     if @expense.save!
-      redirect_to root_path, notice: "🤑"
+      redirect_to budgets_url, notice: "🤑"
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,8 +41,9 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    @budget = @expense.budget
     @expense.destroy
-    redirect_to budget_expenses_url(@budget), notice: "Expense was destroyed."
+    redirect_to budget_expenses_path(@budget), notice: "Expense was destroyed."
   end
 
 
