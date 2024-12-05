@@ -26,6 +26,7 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    @expense = Expense.find(params[:id])
   end
 
   def create
@@ -48,8 +49,9 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    @budget = @expense.budget
     @expense.destroy
-    redirect_to budget_expenses_url(@budget), notice: "Expense was destroyed."
+    redirect_to budget_expenses_path(@budget), notice: "Expense was destroyed."
   end
 
 

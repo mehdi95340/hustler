@@ -6,8 +6,9 @@
     <div class="price">
      <%= simple_form_for [@budget, @expense] do |f| %>
         <%= f.input :amount %>
-        <%= f.input :description %>
+
         <%= f.association :category, collection: Category.where(user: current_user)  %>
+
     </div>
     <div class="expense-btn">
         <%= f.submit "SUBMIT", class: "btn btn-primary" %>
