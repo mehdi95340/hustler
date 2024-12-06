@@ -23,7 +23,7 @@
             <p><strong>Category:</strong> <%= expense.category.name %></p>
             <p><strong>Amount:</strong> <%= number_to_currency(expense.amount) %></p>
             <p><strong>Description:</strong> <%= expense.description %></p>
-            <p><strong>Date:</strong> <%= expense.date.strftime("%B %d, %Y") %></p>
+            <p><strong>Date:</strong> <%= expense.date %></p>
             <div class="button-container">
               <%= link_to "Edit", edit_expense_path(expense), class: "edit-button" %>
               <%= link_to "Delete",
