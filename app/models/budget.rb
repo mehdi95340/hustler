@@ -26,6 +26,7 @@ class Budget < ApplicationRecord
     sum = 0
     expenses.each do |expense|
       sum += expense.amount.to_i
+    end
   end
 
   def remaining_budget
