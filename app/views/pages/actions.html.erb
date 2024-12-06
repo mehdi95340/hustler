@@ -1,13 +1,13 @@
 <div class="container">
   <div class="actions">
     <div class="btn">
-      <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id) %>
+      <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
     </div>
     <div class="btn">
-      <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id) %>
+      <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
     </div>
     <div class="btn">
-      <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id) %>
+      <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
     </div>
   </div>
 </div>

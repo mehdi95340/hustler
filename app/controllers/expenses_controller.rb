@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  before_action :set_budget, only: [:new, :create, :index, :show]
+  before_action :set_budget, only: [:new, :create, :index]
   before_action :authenticate_user!
 
   def index
@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
     @expense.budget = @budget
     @expense.date = Date.today
     if @expense.save!
-      redirect_to budget_expense_path( @budget, @expense ), notice: "🤑"
+      redirect_to expense_path(@expense), notice: "🤑"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      redirect_to [@budget, @expense], notice: "Expense was updated."
+      redirect_to expense_path( @expense ), notice: "Edit Successful"
     else
       render :edit, status: :unprocessable_entity
     end

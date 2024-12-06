@@ -31,6 +31,7 @@
                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                 class: "delete-button" %>
             </div>
+  <%= expense.content%>
           </li>
         <% end %>
       </ul>
@@ -38,7 +39,6 @@
       <p class="no-expenses-message">No expenses have been recorded for this month.</p>
     <% end %>
     <p>
-  <%= expense.content%>
   </p>
   </div>
 
@@ -46,5 +46,3 @@
     <%= link_to "Add Expense", new_budget_expense_path, class: "add-expense-button" %>
   </div>
 </div>
-
-
