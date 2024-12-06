@@ -1,6 +1,6 @@
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  # skip_before_action :authenticate_user!, only: [:home]
 
   def home
     if current_user
@@ -18,7 +18,7 @@ class PagesController < ApplicationController
       @total_expenses = 0
     end
   end
- 
+
   def dashboard
     @budgets = current_user.budgets
     @expenses = Expense.all
