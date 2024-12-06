@@ -5,8 +5,7 @@
     </p>
     <div class="price-container">
       Total:
-      <span>$</span><%= number_to_currency(@expenses.sum(&:amount), unit: "") %>
-    </div>
+<span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>    </div>
   </div>
 
   <div>

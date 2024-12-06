@@ -24,10 +24,14 @@ class Budget < ApplicationRecord
 
   def total_expenses
     sum = 0
-    expenses.each do |expense|
-      sum += expense.amount
+    if expenses.any?
+      expenses.each do |expense|
+        sum += expense.amount.to_i
+      end
+      return sum
+    else
+      return 0
     end
-    return sum
   end
 
   def remaining_budget
