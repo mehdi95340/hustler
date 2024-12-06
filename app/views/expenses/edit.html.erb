@@ -4,7 +4,7 @@
      <%#= link_to "",  %>
     </div>
     <div class="price">
-     <%= simple_form_for [@budget, @expense] do |f| %>
+     <%= simple_form_for (@expense) do |f| %>
         <%= f.input :amount %>
 
         <%= f.association :category, collection: Category.where(user: current_user)  %>

@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
     @expense.budget = @budget
     @expense.date = Date.today
     if @expense.save!
-      redirect_to budget_expenses_path( @budget, @expense ), notice: "🤑"
+      redirect_to expense_path(@expense), notice: "🤑"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      redirect_to [@budget, @expense], notice: "Expense was updated."
+      redirect_to expense_path( @expense ), notice: "Edit Successful"
     else
       render :edit, status: :unprocessable_entity
     end
