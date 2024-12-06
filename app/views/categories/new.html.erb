@@ -1,15 +1,7 @@
 <h1>New Category</h1>
 
 <%= form_with(model: @category, local: true) do |form| %>
-  <% if @category.errors.any? %>
-    <div id= "error">
-      <ul>
-        <% @category.errors.full_message.each do |message| %>
-        <li><%= message %></li>
-          <%end %>
-      </ul>
-    </div>
-<% end %>
+
 
 <div class="field">
   <%= form.label :name %>
@@ -23,8 +15,5 @@
 </div>
 <% end %>
 
-<%= link_to "Delete",
-  category_path(@category),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+
 <%= link_to "Back", categories_path %>
