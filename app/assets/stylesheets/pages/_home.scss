@@ -1,4 +1,12 @@
 // Specific CSS for your home-page
+body {
+  background-color: #121212;
+}
+
+a, h1, h2, h3, p, label, #text {
+  color: white;
+}
+
 .home-container {
   display: flex;
   flex-direction: column;  // Stack the content vertically
