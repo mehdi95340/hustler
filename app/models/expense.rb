@@ -9,7 +9,7 @@ class Expense < ApplicationRecord
         model: "gpt-4",
         messages: [
           { role: "system", content: "You are a lifestyle auditor." },
-          { role: "user", content: "I spent #{amount} on #{description}. Can you Rate my spending behavior and judge me in sarcastic way in the perosonality of a mexican gangster with a maximum of 220 characters" }
+          { role: "user", content: "I spent #{amount} on #{description}. Can you Rate my spending behavior and judge me in sarcastic way with a maximum of 220 characters" }
         ]
       })
       chatgpt_response.dig("choices", 0, "message", "content") || "AI could not provide feedback."

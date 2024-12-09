@@ -1,8 +1,10 @@
+# Delete all existing data
 Expense.destroy_all
 Category.destroy_all
 Budget.destroy_all
 User.destroy_all
 
+# Create users
 users = [
   { email: "grantbeven@gmail.com", password: "password1"},
   { email: "dmitrygoremykinzw@gmail.com", password: "password2"},
@@ -12,6 +14,7 @@ users = [
   User.create!(user_attributes)
  end
 
+ # Create budgets
  budgets = [
   { user_id: User.first.id, month: 2 , total_amount: 3000},
   { user_id: User.second.id, month: 6 , total_amount: 1000},
@@ -21,6 +24,8 @@ users = [
  budgets.each do |budget_attributes|
   Budget.create!(budget_attributes)
  end
+
+ # Create categories
  categories = [
    { name: "Entertainment", user_id: User.all.sample.id },
    { name: "Restaurant", user_id: User.all.sample.id  },
@@ -37,7 +42,7 @@ users = [
     Category.create!(categories_attributes)
   end
 
-
+  # Create expenses
  expenses = [
   { budget_id: Budget.first.id, category_id: Category.first.id, amount: 1500, description: "Weekly groceries" },
   { budget_id: Budget.second.id, category_id: Category.second.id, amount: 50, description: "Ice cream"},

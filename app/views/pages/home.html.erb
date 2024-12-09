@@ -1,11 +1,14 @@
-<div class="main-container">
+
+<div class="home-container main-container">
+<div class="chart-container">
   <div class="chart">
+  <%= link_to root_path do %>
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
     <% chart_data = [@total_expenses, @remaining_budget] %>
   <div data-controller="chart" data-chart-labels-value="<%= chart_labels.to_json%>"
                                data-chart-data-value="<%= chart_data.to_json%>"
                                >
-    <canvas data-chart-target="canvas">
+    <canvas data-chart-target="canvas" width="200" height="200">
   </div>
 
 
@@ -13,7 +16,14 @@
 
   <div class="action-div">
    <div class="action-btn mt-16">
-    <%= link_to "ACTIONS", actions_path %>
-   </div>
   </div>
+
+
+  <%= turbo_frame_tag :expenses do %>
+  <div class="buttons">
+      <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
+      <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
+      <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
+      </div>
+  <% end %>
 </div>
