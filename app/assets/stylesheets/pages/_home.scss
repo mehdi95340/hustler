@@ -1,4 +1,38 @@
 // Specific CSS for your home-page
+
 .broke {
   background-color: red;
+
+body {
+  background-color: #121212;
+}
+
+a, h1, h2, h3, p, label, #text {
+  color: white;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;  // Stack the content vertically
+  align-items: center;
+  justify-content: center;
+
+  .chart {
+    /* Styles for the chart */
+    width: 100%; // Or any width you want for the chart
+  }
+
+  .buttons {
+    /* Styles for buttons */
+    width: 100%; // Or any specific width
+    margin-top: 20px;
+    text-align: center;  // Add some spacing if needed
+  }
+
+  turbo-frame {
+    /* Position Turbo Frame beneath the buttons */
+    margin-top: 20px;  // Adjust as needed to add spacing
+    width: 100%;  // Ensure Turbo Frame takes the full width (if needed)
+  }
+
 }
