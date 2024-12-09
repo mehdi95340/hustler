@@ -1,21 +1,33 @@
-<%= turbo_frame_tag :expenses do %>
-
-<div class="container">
-  <div class="add-container">
-    <div class="category">
-    </div>
-     <%= simple_form_for [@budget, @expense] do |f| %>
-    <div class="price">
-        <%= f.input :amount %>
-        <%= f.input :description %>
-        <%= f.association :category, collection: Category.where(user: current_user)  %>
-    <div class="expense-btn">
-        <%= f.submit "SUBMIT", class: "btn btn-primary" %>
-    </div>
-    </div>
+<%= turbo_frame_tag :expenses, class: "container mt-5 p-4 bg-dark text-light rounded shadow-lg" do %>
+  <div class="add-container mb-4">
+    <h2 class="text-warning text-center">Add Expense</h2>
+    <p class="text-muted text-center">Fill in the details below to add a new expense to your budget.</p>
+    <%= simple_form_for [@budget, @expense], html: { class: "mt-4" } do |f| %>
+      <div class="form-group mb-3">
+        <%= f.label :amount, "Amount", class: "form-label text-light" %>
+        <%= f.input :amount,
+            input_html: { class: "form-control bg-secondary text-light border-0", placeholder: "Enter expense amount" },
+            label: false %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.label :description, "Description", class: "form-label text-light" %>
+        <%= f.input :description,
+            input_html: { class: "form-control bg-secondary text-light border-0", placeholder: "Enter expense description" },
+            label: false %>
+      </div>
+      <div class="form-group mb-4">
+        <%= f.label :category, "Category", class: "form-label text-light" %>
+        <%= f.association :category,
+            collection: Category.where(user: current_user),
+            input_html: { class: "form-control bg-secondary text-light border-0" },
+            label: false %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Submit", class: "btn btn-warning btn-lg w-100" %>
+      </div>
     <% end %>
   </div>
-  <%= link_to "BACK", root_path, class: "action-btn" %>
-
-</div>
+  <div class="text-center">
+    <%= link_to "Back", root_path, class: "btn btn-outline-light mt-3" %>
+  </div>
 <% end %>
