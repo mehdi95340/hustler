@@ -1,9 +1,6 @@
-<%= turbo_frame_tag :expenses do %>
-
 <div class="container">
   <div class="add-container">
     <div class="category">
-     <%#= link_to "",  %>
     </div>
      <%= simple_form_for [@budget, @expense] do |f| %>
     <div class="price">
@@ -17,4 +14,3 @@
     <% end %>
   </div>
 </div>
-<% end %>
