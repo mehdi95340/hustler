@@ -3,7 +3,6 @@
 <div class="container">
   <div class="add-container">
     <div class="category">
-     <%#= link_to "",  %>
     </div>
      <%= simple_form_for [@budget, @expense] do |f| %>
     <div class="price">
@@ -16,5 +15,7 @@
     </div>
     <% end %>
   </div>
+  <%= link_to "BACK", root_path, class: "action-btn" %>
+
 </div>
 <% end %>
