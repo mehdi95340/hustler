@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+
+.broke {
+  background-color: red;
+
 body {
   background-color: #121212;
 }
@@ -30,4 +34,5 @@ a, h1, h2, h3, p, label, #text {
     margin-top: 20px;  // Adjust as needed to add spacing
     width: 100%;  // Ensure Turbo Frame takes the full width (if needed)
   }
+
 }

@@ -1,6 +1,17 @@
 
+<% if current_user.budgets.last.at_zero? %>
+<div class="broke">
+
+<p>you're broke</p>
+</div>
+<% end %>
+
+<div class="container">
+
+
 <div class="home-container main-container">
 <div class="chart-container">
+
   <div class="chart">
   <%= link_to root_path do %>
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
@@ -10,12 +21,10 @@
                                >
     <canvas data-chart-target="canvas" width="200" height="200">
   </div>
+
   </div>
   <% end %>
   </div>
-
-
-
 
 
   <%= turbo_frame_tag :expenses do %>
