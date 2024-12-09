@@ -1,4 +1,6 @@
-<%= simple_form_for(@budget) do |f| %>
-  <%= f.input :total_amount %>
-  <%= f.submit %>
+<%= turbo_frame_tag :expenses do %>
+  <%= simple_form_for(@budget) do |f| %>
+    <%= f.input :total_amount %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
