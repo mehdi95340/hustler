@@ -1,5 +1,12 @@
-<h1>Monthly Budget</h1>
-<% @budgets.each do |budget| %>
-<%= budget.total_amount %>
-<%= budget.month %>
-<% end %>
+<title>Monthly Budget</title>
+<div class="container">
+  <h1>Monthly Budget</h1>
+  <div class="budget-list">
+    <% @budgets.each do |budget| %>
+    <div class="budget-item">
+      <div class="budget-month"><%= budget.month %></div>
+      <div class="budget-amount"><%= budget.total_amount %></div>
+    </div>
+  <% end %>
+  </div>
+</div>
