@@ -1,10 +1,10 @@
 
-.container {
+.main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #201937, #2b2b2b);
   font-family: 'Roboto', sans-serif;
 }
 
@@ -22,22 +22,20 @@
   font-weight: 600;
   font-size: 16px;
   text-align: center;
-  background: linear-gradient(135deg, #00f0ff, #4b0082);
+  background-color: #bb86fc;
+  margin-top: 40px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
+  border-radius: 8px;
   box-shadow: 0px 8px 15px rgba(132, 131, 131, 0.3);
   transition: all 0.3s ease-in-out;
   text-decoration: none;
 }
 
-/* Hover Effects */
 .action-btn:hover {
-  background: linear-gradient(135deg, #4b0082, #00f0ff);
   box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(-5px);
 }
 
-/* Optional: Button Active State */
 .action-btn:active {
   transform: translateY(2px);
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);

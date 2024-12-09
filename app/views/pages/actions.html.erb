@@ -9,6 +9,8 @@
     <div class="btn">
       <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
     </div>
+    <div class="btn">
+      <%= link_to "NEW BUDGET", new_budget_path(current_user.budgets.last.id), class: "action-btn" %>
+    </div>
   </div>
 </div>
-

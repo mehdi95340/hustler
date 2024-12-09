@@ -22,19 +22,19 @@ export default class extends Controller {
             label: "",
             data: this.dataValue,
             backgroundColor: [
-              "red",
-              "green"
+              "#03dac6",
+              "#bb86fc"
             ],
             borderColor: [
-              "green",
-              "red"
+              "03dac6",
+              "bb86fc"
             ],
-            borderWidth: 1
+            borderWidth: 0.3
           }]
         },
         options: {
           responsive: true,
-          cutout: '50%', // makes hole in doughnut
+          cutout: '75%', // makes hole in doughnut
           plugins: {
             legend: {
               position: "top", //where remaining budget are total budget and remaining expense
@@ -43,7 +43,7 @@ export default class extends Controller {
             tooltip: {
               callbacks: {
                 label: function(tooltipItem) {
-                  return tooltipItem.label + ": " + tooltipItem.raw + "%";
+                  return tooltipItem.label + ": R" + tooltipItem.raw;
                 }
               }
             }

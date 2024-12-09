@@ -5,41 +5,34 @@
     </p>
     <div class="price-container">
       Total:
-<span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>    </div>
+      <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>
+    </div>
   </div>
 
   <div>
     <% if @expenses.any? %>
-      <ul class="lists">
+      <div class="expense-lists">
         <% @expenses.each do |expense| %>
-          <li class="list">
-            <span>
-              <!-- SVG icon for styling -->
-              <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
-              </svg>
-            </span>
-            <p><strong>Category:</strong> <%= expense.category.name %></p>
-            <p><strong>Amount:</strong> <%= number_to_currency(expense.amount) %></p>
-            <p><strong>Description:</strong> <%= expense.description %></p>
-            <p><strong>Date:</strong> <%= expense.date %></p>
-            <div class="button-container">
-              <%= link_to "Edit", edit_expense_path(expense), class: "edit-button" %>
-              <%= link_to "Delete",
-                expense_path(expense),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: "delete-button" %>
+          <div class="list">
+            <div class="expense-info">
+              <p><strong>Category:</strong> <%= expense.category.name %></p>
+              <p><strong>Amount:</strong> <%= number_to_currency(expense.amount) %></p>
+              <p><strong>Description:</strong> <%= expense.description %></p>
+              <p><strong>Date:</strong> <%= expense.date %></p>
+              <div class="button-container">
+                <%= link_to "Edit", edit_expense_path(expense), class: "edit-button" %>
+                <%= link_to "Delete",
+                  expense_path(expense),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  class: "delete-button" %>
+              </div>
             </div>
-  <%= expense.content%>
-          </li>
-  <%= expense.content%>
+          </div>
         <% end %>
-      </ul>
+      </div>
     <% else %>
       <p class="no-expenses-message">No expenses have been recorded for this month.</p>
     <% end %>
-    <p>
-  </p>
   </div>
 
   <div class="button-container">

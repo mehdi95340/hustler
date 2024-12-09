@@ -1,17 +1,18 @@
-<div class="container">
+<div class="main-container">
   <div class="chart">
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
-    <%= chart_data = [@total_expenses, @remaining_budget] %>
+    <% chart_data = [@total_expenses, @remaining_budget] %>
   <div data-controller="chart" data-chart-labels-value="<%= chart_labels.to_json%>"
                                data-chart-data-value="<%= chart_data.to_json%>"
                                >
-    <canvas data-chart-target="canvas" width="360" height="360">
+    <canvas data-chart-target="canvas">
   </div>
 
 
   </div>
+
   <div class="action-div">
-   <div class="action-btn">
+   <div class="action-btn mt-16">
     <%= link_to "ACTIONS", actions_path %>
    </div>
   </div>
