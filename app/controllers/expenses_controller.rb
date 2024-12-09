@@ -3,32 +3,30 @@ class ExpensesController < ApplicationController
   before_action :set_budget, only: [:new, :create, :index]
   before_action :authenticate_user!
 
+   # GET /budgets/:budget_id/expenses
   def index
     @expenses = @budget.expenses
-   # @categories = @budget.categories
     @budgets = Budget.all
   end
 
+  # GET /expenses/1
   def show
-
     @ai_feedback = @expense.generate_ai_content
-    #  @ client = OpenAI::Client.new
-    # chatgpt_response = client.chat(parameters: {
-    #   model: "gpt-4o-mini",
-    #   messages: [{ role: "Life style Auditor", content: " You are a lifestyle auditor. I'll provide details about my expenses #{@expense.amount}, and you'll judge if they enhance my quality of life while staying financially responsible. Rate my spending and give me tips to strike a better balance."}]
-    # })
-    #   content = chatgpt_response["choices"][0]["message"]["content"]
+
   end
 
+  # GET /budgets/:budget_id/expenses/new
   def new
     @budget = Budget.find(params[:budget_id])
     @expense = Expense.new
   end
 
+  # GET /expenses/1/edit
   def edit
     @expense = Expense.find(params[:id])
   end
 
+  # POST /budgets/:budget_id/expenses
   def create
     @expense = Expense.new(expense_params)
     @expense.budget = @budget
@@ -40,6 +38,7 @@ class ExpensesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /expenses/1
   def update
     if @expense.update(expense_params)
       redirect_to expense_path( @expense ), notice: "Edit Successful"
@@ -48,6 +47,7 @@ class ExpensesController < ApplicationController
     end
   end
 
+  # DELETE /expenses/1
   def destroy
     @budget = @expense.budget
     @expense.destroy
@@ -57,6 +57,7 @@ class ExpensesController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_expense
     @expense = Expense.find(params[:id])
   end
@@ -65,6 +66,7 @@ class ExpensesController < ApplicationController
     @budget = Budget.find(params[:budget_id])
   end
 
+  # Only allow a list of trusted parameters through.
   def expense_params
     params.require(:expense).permit(:amount, :description, :date, :category_id)
   end
