@@ -1,3 +1,10 @@
+<% if current_user.budgets.last.at_zero? %>
+<div class="broke">
+
+<p>yoou're broke</p>
+</div>
+<% end %>
+
 <div class="container">
   <div class="chart">
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
@@ -7,7 +14,6 @@
                                >
     <canvas data-chart-target="canvas" width="360" height="360">
   </div>
-
 
   </div>
   <div class="action-div">

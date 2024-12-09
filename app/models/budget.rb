@@ -27,20 +27,26 @@ class Budget < ApplicationRecord
     expenses.each do |expense|
       sum += expense.amount.to_i
     end
+    return sum
   end
 
   def remaining_budget
     total_amount - total_expenses
   end
 
-  # def weekly_expenses
-  #   expenses.select {|expense| expense.date.strftime('%V').to_i == Date.today.strftime('%V').to_i}.map {|expense| expense.amount}.sum
-  # end
-  # def weekly_expenses
-  #   # expenses.group_by { |expense| expense.date&.strftime("%U") || "Unknown Week" }
-  # end
-
   def expenses_by_category
     expenses.group(:category).sum(:amount)
+  end
+
+  def at_zero?
+    remaining_budget <= 0
+  end
+  # Check if the budget is at zero and handle accordingly
+  def check_budget_status
+    if @budget.at_zero?
+      flash[:alert] = "Your budget is at zero. Please review your expenses."
+    else
+      ""
+    end
   end
 end
