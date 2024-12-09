@@ -24,13 +24,8 @@ class Budget < ApplicationRecord
 
   def total_expenses
     sum = 0
-    if expenses.any?
-      expenses.each do |expense|
-        sum += expense.amount.to_i
-      end
-      return sum
-    else
-      return 0
+    expenses.each do |expense|
+      sum += expense.amount.to_i
     end
   end
 
@@ -38,9 +33,12 @@ class Budget < ApplicationRecord
     total_amount - total_expenses
   end
 
-  def weekly_expenses
-    expenses.select {|expense| expense.date.strftime('%V').to_i == Date.today.strftime('%V').to_i}.map {|expense| expense.amount}.sum
-  end
+  # def weekly_expenses
+  #   expenses.select {|expense| expense.date.strftime('%V').to_i == Date.today.strftime('%V').to_i}.map {|expense| expense.amount}.sum
+  # end
+  # def weekly_expenses
+  #   # expenses.group_by { |expense| expense.date&.strftime("%U") || "Unknown Week" }
+  # end
 
   def expenses_by_category
     expenses.group(:category).sum(:amount)
