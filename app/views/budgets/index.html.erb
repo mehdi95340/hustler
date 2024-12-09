@@ -1,5 +1,7 @@
-<h1>Monthly Budget</h1>
+<h1>History</h1>
 <% @budgets.each do |budget| %>
-<%= budget.total_amount %>
-<%= budget.month %>
+  <%= link_to budget_path(budget) do %>
+    <%= budget.total_amount %>
+    <%= budget.month %>
+  <% end %>
 <% end %>

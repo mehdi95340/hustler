@@ -5,7 +5,7 @@
   <h1>for <%= @budget.month %></h1>
   <p>EXPENSES BY CATEGORY:</p>
   <% @budget.expenses_by_category.each do |category, total| %>
-  <%= category.name %> <%= number_to_currency(total) %>
+  <p><%= category.name %> <%= number_to_currency(total) %></p>
   <% end %>
   </div>
 </div>
