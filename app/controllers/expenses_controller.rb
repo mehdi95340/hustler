@@ -28,11 +28,13 @@ class ExpensesController < ApplicationController
 
   # POST /budgets/:budget_id/expenses
   def create
-    @category = Category.create!( name:params[:new_category], user_id: current_user.id)
+    unless params[:new_category] == ""
+      @category = Category.create!( name:params[:new_category], user_id: current_user.id)
+    end
     @expense = Expense.new(expense_params)
     @expense.budget = @budget
     @expense.date = Date.today
-    @expense.category = @category
+    @expense.category = @category if @category
     if @expense.save!
       redirect_to expense_path(@expense), notice: "🤑"
     else
