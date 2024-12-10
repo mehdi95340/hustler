@@ -45,12 +45,6 @@ class BudgetsController < ApplicationController
     redirect_to budget_url, notice: "budget was destroy"
   end
 
-  # def check_budget_status
-  #   message = @budget.check_budget_status
-  #   flash[:alert] = message unless message.empty?
-  # end
-
-
   private
 
    # Use callbacks to share common setup or constraints between actions.
