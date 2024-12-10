@@ -32,6 +32,7 @@
       <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
       <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
       <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
+      <%= link_to "ADD CATEGORY", new_category_path, class: "action-btn" %>
       <hr>
       <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
       </div>

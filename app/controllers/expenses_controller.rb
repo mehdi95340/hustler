@@ -28,9 +28,11 @@ class ExpensesController < ApplicationController
 
   # POST /budgets/:budget_id/expenses
   def create
+    @category = Category.create!( name:params[:new_category], user_id: current_user.id)
     @expense = Expense.new(expense_params)
     @expense.budget = @budget
     @expense.date = Date.today
+    @expense.category = @category
     if @expense.save!
       redirect_to expense_path(@expense), notice: "🤑"
     else
@@ -68,7 +70,7 @@ class ExpensesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def expense_params
-    params.require(:expense).permit(:amount, :description, :date, :category_id)
+    params.require(:expense).permit(:amount, :description, :date, :category_id, :new_category)
   end
 
 end
