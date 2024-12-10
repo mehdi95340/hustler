@@ -4,3 +4,6 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import "chart.js"
+import "chartkick"
+import "Chart.bundle"
+
