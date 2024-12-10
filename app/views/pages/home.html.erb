@@ -30,9 +30,10 @@
   <div class="btn-container">
     <div class="buttons">
         <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
-        <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
+        <%= link_to "ALL EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
+
     </div>
   </div>
   <% end %>
