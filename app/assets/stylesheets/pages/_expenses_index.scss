@@ -76,8 +76,7 @@
   margin-top: 10px;
 }
 
-.edit-button,
-.delete-button,
+
 .add-expense-button {
   background-color: #007bff;
   color: #fff;
@@ -99,4 +98,21 @@
 
 .add-expense-button:hover {
   background-color: #0056b3;
+}
+
+.submit-expense-btn-primary {
+  display: inline-block;
+  padding: 15px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  background-color: #bb86fc;
+  margin-top: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0px 8px 15px rgba(132, 131, 131, 0.3);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
 }

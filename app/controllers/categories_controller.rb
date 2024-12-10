@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.user = current_user
     if @category.save!
-      redirect_to @category, notice: "Category was create."
+      redirect_to root_path, notice: "Category was create."
     else
       render :new, status: :unprocessable_entity
     end
