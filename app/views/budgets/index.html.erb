@@ -1,11 +1,17 @@
-<div class="pack-container">
-  <h1>Monthly Budget</h1>
-  <div class="expense-lists">
+<div class="container h-100" >
+  <h1>BUDGET INDEX</h1>
+  <div class="show">
     <% @budgets.each do |budget| %>
-    <div class="expense-info">
-      <div class="budget-month"><%= budget.month %></div>
-      <div class="budget-amount"><%= budget.total_amount %></div>
+    <%= link_to budget_path(budget) do %>
+      <%# if statement to check if budget at zero %>
+
+      <%# else statement for icon if not zero %>
+      <div class="index-btn">
+      <div class="">MONTH: <%= budget.month.capitalize %></div>
+      <div class="">INITIAL BUDGET: <%= budget.total_amount %></div>
+      </div>
     </div>
+    <% end %>
   <% end %>
   </div>
 </div>

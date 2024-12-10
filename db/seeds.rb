@@ -54,7 +54,23 @@ users = [
   Expense.create!(expense_attributes)
  end
 
- puts "Seeds was created succesfully!"
+  puts "Seeds was created succesfully!"
+
+#  category_name = "Fitness & Health" # new category name
+#  user_id = User.all.sample.id   #assign random user
+
+#  category = Category.find_or_create_by!(name: category_name, user_id: user_id) #check category exist if not create it
+
+#  #create new expense
+#  Expense.create!(
+#   budget_id: Budget.first.id,
+
+#   category_id: category.id,
+#   amount: 100,
+#   description: "Gym subscription"
+#  )
+
+#  puts "New category and expense created: #{category_name}"
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).

@@ -12,7 +12,6 @@
 <div class="home-container main-container">
 <div class="chart-container">
 
-  <%= turbo_frame_tag :expenses do %>
   <div class="chart">
   <%= link_to root_path do %>
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
@@ -23,10 +22,11 @@
     <canvas data-chart-target="canvas" width="200" height="200">
   </div>
 
+    <% end %>
   </div>
-  <% end %>
   </div>
 
+  <%= turbo_frame_tag :expenses do %>
   <div class="btn-container">
     <div class="buttons">
         <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
@@ -34,6 +34,6 @@
         <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
     </div>
-    <% end %>
   </div>
+  <% end %>
 </div>
