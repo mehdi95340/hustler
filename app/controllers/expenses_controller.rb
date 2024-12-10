@@ -28,7 +28,11 @@ class ExpensesController < ApplicationController
 
   # POST /budgets/:budget_id/expenses
   def create
-    @category = Category.create!( name:params[:new_category], user_id: current_user.id)
+    if params[:new_category] == ""
+      @category = Category.find(params[:expense][:category_id])
+    else
+      @category = Category.create!(name: params[:new_category], user_id: current_user.id)
+    end
     @expense = Expense.new(expense_params)
     @expense.budget = @budget
     @expense.date = Date.today
