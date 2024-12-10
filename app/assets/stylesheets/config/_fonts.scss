@@ -1,9 +1,10 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Honk&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Lacquer&family=Major+Mono+Display&family=Nabla:EDPT,EHLT@135,15&family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&family=Orbitron:wght@400..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 // Define fonts for body and headers
-$body-font: "KoHo", "Helvetica", "sans-serif";
-$headers-font: "KoHo", "Helvetica", "sans-serif";
+$body-font: "Orbitron", "Helvetica", "sans-serif";
+$headers-font: "Orbitron", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

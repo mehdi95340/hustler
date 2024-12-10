@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   # Expense-related routes
   resources :expenses, only: [:show, :destroy, :edit, :update]
-  resources :categories
 
   # Custom routes
   get 'dashboard', to: 'pages#dashboard'
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
 
     # Root route
     root to: "pages#home"
-    
+
   # Actions route
   get "actions", to: "pages#actions", as: :actions
 end
