@@ -43,6 +43,7 @@ users = [
   end
 
   # Create expenses
+  
  expenses = [
   { budget_id: Budget.first.id, category_id: Category.first.id, amount: 1500, description: "Weekly groceries" },
   { budget_id: Budget.second.id, category_id: Category.second.id, amount: 50, description: "Ice cream"},

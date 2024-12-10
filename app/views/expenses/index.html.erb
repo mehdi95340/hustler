@@ -16,10 +16,10 @@
         <% @expenses.each do |expense| %>
           <div class="list">
             <div class="expense-info">
-              <p><strong>Category:</strong> <%= expense.category.name %></p>
-              <p><strong>Amount:</strong> <%= number_to_currency(expense.amount) %></p>
-              <p><strong>Description:</strong> <%= expense.description %></p>
-              <p><strong>Date:</strong> <%= expense.date %></p>
+              <p><strong>CATEGORY:</strong> <%= expense.category.name %></p>
+              <p><strong>AMOUNT:</strong> <%= number_to_currency(expense.amount) %></p>
+              <p><strong>DESCRIPTION:</strong> <%= expense.description %></p>
+              <p><strong>DATE:</strong> <%= expense.date %></p>
               <div class="button-container">
                 <%= link_to "Edit", edit_expense_path(expense), class: "edit-button" %>
                 <%= link_to "Delete",

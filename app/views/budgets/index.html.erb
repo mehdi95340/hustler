@@ -1,7 +1,11 @@
-<h1>History</h1>
-<% @budgets.each do |budget| %>
-  <%= link_to budget_path(budget) do %>
-    <%= budget.total_amount %>
-    <%= budget.month %>
+<div class="pack-container">
+  <h1>Monthly Budget</h1>
+  <div class="expense-lists">
+    <% @budgets.each do |budget| %>
+    <div class="expense-info">
+      <div class="budget-month"><%= budget.month %></div>
+      <div class="budget-amount"><%= budget.total_amount %></div>
+    </div>
   <% end %>
-<% end %>
+  </div>
+</div>
