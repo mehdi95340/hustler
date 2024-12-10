@@ -26,7 +26,7 @@
   </div>
   </div>
 
-  <%= turbo_frame_tag :expenses do %>
+
   <div class="btn-container">
     <div class="buttons">
         <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
@@ -36,6 +36,6 @@
 
     </div>
   </div>
-  <% end %>
+
 </div>
 </div>

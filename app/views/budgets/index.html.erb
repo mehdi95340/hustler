@@ -1,20 +1,22 @@
-<div class="container h-100" >
-  <h1>BUDGET INDEX</h1>
-    <% @budgets.each do |budget| %>
-  <div class="show">
-      <%= link_to budget_path(budget) do %>
-        <%# if statement to check if budget at zero %>
-        <% if budget.at_zero? %>
-        <p>You're broke</p>
-        <% else %>
-        <p>You're not broke</p>
+
+  <div class="container h-100" >
+    <h1>BUDGET INDEX</h1>
+      <% @budgets.each do |budget| %>
+    <div class="show">
+        <%= link_to budget_path(budget) do %>
+          <%# if statement to check if budget at zero %>
+          <% if budget.at_zero? %>
+          <p>You're broke</p>
+          <% else %>
+          <p>You're not broke</p>
+          <% end %>
+
+          <%# else statement for icon if not zero %>
+          <p>MONTH: <%= budget.month.upcase %></p>
+          <p>INITIAL BUDGET: <%= budget.total_amount %></p>
+
         <% end %>
-
-        <%# else statement for icon if not zero %>
-        <p>MONTH: <%= budget.month.upcase %></p>
-        <p>INITIAL BUDGET: <%= budget.total_amount %></p>
-
+    </div>
       <% end %>
   </div>
-    <% end %>
-</div>
+
