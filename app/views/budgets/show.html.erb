@@ -1,11 +1,28 @@
 <div class="container">
-  <div class="chart">
-   <p>BUDGET:<%= @budget.remaining_budget %></p>
-   <p>TOTAL EXPENSES:<%= @budget.total_expenses %></p>
-  <h1>for <%= @budget.month %></h1>
-  <p>EXPENSES BY CATEGORY:</p>
-  <% @budget.expenses_by_category.each do |category, total| %>
-  <p><%= category.name %> <%= number_to_currency(total) %></p>
-  <% end %>
+  <div class="show">
+    <h1><%= @budget.month %></h1>
+    <p>BUDGET: <%= @budget.remaining_budget %></p>
+    <p>TOTAL EXPENSES: <%= @budget.total_expenses %></p>
+
+    <div class="expenses-category">
+      <h2>EXPENSES BY CATEGORY:</h2>
+      <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @budget.expenses_by_category.each_with_index do |(category, total), index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <p><%= category.name %>: <%= number_to_currency(total) %></p>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
