@@ -1,8 +1,23 @@
-<div class="container">
+<div class="container h-100">
   <div class="show">
-    <h1><%= @budget.month %></h1>
+    <h1><%= @budget.month.upcase %></h1>
     <p>BUDGET: <%= @budget.remaining_budget %></p>
     <p>TOTAL EXPENSES: <%= @budget.total_expenses %></p>
+
+
+
+
+<%= pie_chart @budget.expenses
+               .joins(:category)
+               .group('categories.name')
+               .sum(:amount)
+               .map { |category_name, total_amount| [category_name, total_amount] },
+               donut: true %>
+
+
+
+
+
 
     <div class="expenses-category">
       <h2>EXPENSES BY CATEGORY:</h2>
@@ -24,5 +39,12 @@
         </button>
       </div>
     </div>
-  </div>
+
+  <% @budget.expenses.each do |expense| %>
+    <div class="action-btn">
+    <%= expense.amount %> : <%= expense.category.name %>
+    </div>
+  <% end %>
 </div>
+
+  </div>

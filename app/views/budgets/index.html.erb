@@ -4,11 +4,17 @@
     <% @budgets.each do |budget| %>
     <%= link_to budget_path(budget) do %>
       <%# if statement to check if budget at zero %>
+      <% if budget.at_zero? %>
+      <p>You're broke</p>
+      <% else %>
+      <p>You're not broke</p>
+      <% end %>
 
       <%# else statement for icon if not zero %>
-      <div class="index-btn">
-      <div class="">MONTH: <%= budget.month.capitalize %></div>
+      <div class="navbar-nav me-auto">
+      <div class="">MONTH: <%= budget.month.upcase %></div>
       <div class="">INITIAL BUDGET: <%= budget.total_amount %></div>
+
       </div>
     </div>
     <% end %>
