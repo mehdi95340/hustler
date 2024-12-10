@@ -9,8 +9,11 @@
         <%= f.input :amount %>
         <%= f.input :description %>
         <%= f.association :category, collection: Category.where(user: current_user)  %>
+        <p>OR</p>
+<%= text_field_tag :new_category, nil, placeholder: "Enter a new category", class: "form-control" %>
+
     <div class="expense-btn">
-        <%= f.submit "SUBMIT", class: "btn btn-primary" %>
+        <%= f.submit "SUBMIT", class: "action-btn" %>
     </div>
     </div>
     <% end %>
