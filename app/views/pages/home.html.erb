@@ -20,20 +20,20 @@
   <div data-controller="chart" data-chart-labels-value="<%= chart_labels.to_json%>"
                                data-chart-data-value="<%= chart_data.to_json%>"
                                >
-    <canvas data-chart-target="canvas" width="400" height="400">
+    <canvas data-chart-target="canvas" width="200" height="200">
   </div>
 
   </div>
   <% end %>
   </div>
 
-
-  <div class="buttons">
-      <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
-      <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
-      <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
-      <hr>
-      <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
-      </div>
-  <% end %>
+  <div class="btn-container">
+    <div class="buttons">
+        <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
+        <%= link_to "VIEW YOUR EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
+        <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
+        <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
+    </div>
+    <% end %>
+  </div>
 </div>
