@@ -38,6 +38,12 @@ export default class extends Controller {
           plugins: {
             legend: {
               position: "top", //where remaining budget are total budget and remaining expense
+              labels:{
+                font: {
+                  family: "Orbitron"
+                },
+                color:"white"
+              }
 
             },
             tooltip: {
