@@ -17,6 +17,8 @@
         <% @expenses.each do |expense| %>
             <p><%= number_to_currency(expense.amount) %></p>
             <p><%= expense.description %></p>
+            p
+            <p><%=  %></p>
             <div class="travis-buttons">
               <!-- Edit Button -->
               <%= link_to "Edit", edit_expense_path(expense), class: "travis-button edit" %>
