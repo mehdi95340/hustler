@@ -2,34 +2,28 @@
 <% if current_user.budgets.last.total_amount.zero? || current_user.budgets.last.total_amount.negative? %>
 <div class="broke">
 
-<p>you're broke</p>
+<p>CONGRATS HOMIE, you're broke</p>
 </div>
 <% end %>
-
-<div class="container">
-
-
 <div class="home-container main-container">
 <div class="chart-container">
 
   <div class="chart">
-  <%= link_to root_path do %>
     <% chart_labels = ["TOTAL EXPENSES", "REMAINING BUDGET"] %>
     <% chart_data = [@total_expenses, @remaining_budget] %>
   <div data-controller="chart" data-chart-labels-value="<%= chart_labels.to_json%>"
                                data-chart-data-value="<%= chart_data.to_json%>"
-                               >
+                              >
     <canvas data-chart-target="canvas" width="200" height="200">
   </div>
-
-    <% end %>
   </div>
   </div>
+  
 
 
   <div class="btn-container">
     <div class="buttons">
-        <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
+        <%# <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "ALL EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
         <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
@@ -37,5 +31,4 @@
     </div>
   </div>
 
-</div>
 </div>
