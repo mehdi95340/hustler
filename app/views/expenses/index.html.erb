@@ -10,10 +10,9 @@
     </div>
 
     <!-- Expenses List -->
-    <div>
+    <div class="travis-card">
       <% if @expenses.any? %>
         <% @expenses.each do |expense| %>
-          <div class="travis-card">
             <p><%= number_to_currency(expense.amount) %></p>
             <p><%= expense.description %></p>
             <div class="travis-buttons">
@@ -24,7 +23,6 @@
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                   class: "travis-button delete" %>
             </div>
-          </div>
         <% end %>
       <% else %>
         <p class="no-expenses-message">No expenses have been recorded for this month.</p>
@@ -33,7 +31,7 @@
 
     <!-- Add Expense Button -->
     <div class="button-container">
-      <%= link_to "Add Expense", new_budget_expense_path(@budget.id), class: "add-expense-button" %>
+      <%= link_to "Add Expense", new_budget_expense_path(@budget.id), class: "action-btn" %>
     </div>
   </div>
 <% end %>
