@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # Expense-related routes
   resources :expenses, only: [:show, :destroy, :edit, :update]
-
+  resources :goals, only: [:show, :index, :new, :create]
   # Custom routes
   get 'dashboard', to: 'pages#dashboard'
   get 'allexpenses', to: 'expenses#all_expenses'

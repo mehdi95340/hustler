@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :budgets
-  has_many :categories
+  has_many :budgets, dependent: :destroy
+  has_many :categories, dependent: :destroy
+  has_many :goals, dependent: :destroy
+
+  def total_saved
+    sum = 0
+    budgets.each do |budget|
+      sum += budget.saved_amount
+    end
+    return sum
+  end
 end
