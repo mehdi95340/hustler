@@ -1,22 +1,20 @@
 
   <div class="container h-100" >
-
-    <h1>BUDGET INDEX</h1>
-      <% @budgets.each do |budget| %>
-    <div class="show">
+    <!-- Edit Button -->
+    <%= link_to "New Budget", new_budget_path, class: "budget-btn" %>
+    <% @budgets.each do |budget| %>
+      <div class="expense-card">
         <%= link_to budget_path(budget) do %>
-          <%# if statement to check if budget at zero %>
           <% if budget.at_zero? %>
-          <p>You're broke</p>
+            <i class="fa-solid fa-heart-crack"></i>
           <% else %>
-          <p>You're not broke</p>
+            <i class="fa-solid fa-hand-holding-dollar"></i>
           <% end %>
 
           <%# else statement for icon if not zero %>
-          <p>MONTH: <%= budget.month.upcase %></p>
-          <p>INITIAL BUDGET: <%= budget.total_amount %></p>
+          <p> <%= budget.total_amount %></p>
 
         <% end %>
     </div>
-      <% end %>
-  </div>
+  <% end %>
+</div>

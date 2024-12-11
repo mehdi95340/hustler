@@ -42,30 +42,39 @@
     <%= link_to edit_user_registration_path(current_user.id) do %>
     <div class="footer-item">
       <i class="fas fa-user-circle"></i>
-      <p>USER</p>
     </div>
     <% end %>
-    <%= link_to budget_expenses_path(current_user.budgets.last.id) do %>
+    <% if current_user.budgets.last.id.nil? %>
+      <%= link_to budget_expenses_path(current_user.budgets.second_to_last.id) do %>
     <div class="footer-item">
       <i class="fas fa-chart-line"></i>
-      <p>EXPENSES</p>
+    </div>
+    <% end %>
+    <div class="footer-item">
+    <%= link_to new_budget_expense_path(current_user.budgets.second_to_last.id) do %>
+      <i class="fas fa-plus-circle"></i>
+      <% end %>
+    </div>
+    <% else %>
+      <%= link_to budget_expenses_path(current_user.budgets.last.id) do %>
+    <div class="footer-item">
+      <i class="fas fa-chart-line"></i>
     </div>
     <% end %>
     <div class="footer-item">
     <%= link_to new_budget_expense_path(current_user.budgets.last.id) do %>
       <i class="fas fa-plus-circle"></i>
-      <p>ADD EXPENSE</p>
       <% end %>
     </div>
+    <% end %>
+
     <div class="footer-item">
     <%= link_to budgets_path do %>
       <i class="fas fa-wallet"></i>
-      <p>BUDGET</p>
       <% end %>
     </div>
     <div class="footer-item">
       <i class="fas fa-bullseye"></i>
-      <p>GOALS</p>
     </div>
   </div>
 </footer>
