@@ -27,6 +27,7 @@
 
 .travis-buttons {
 
+
   .travis-button {
     display: flex;
     text-decoration: none;
@@ -36,6 +37,7 @@
     font-weight: bold;
     text-transform: uppercase;
     position: relative;
+    margin-left: 6px;
     display: inline-block;
     transition: all 0.3s ease;
     overflow: hidden;

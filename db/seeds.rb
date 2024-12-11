@@ -21,10 +21,10 @@ users = [
    { user_id: User.first.id, month: 3 , total_amount: 46580},
    { user_id: User.first.id, month: 4 , total_amount: 3},
    { user_id: User.first.id, month: 5 , total_amount: 30000},
-   { user_id: User.first.id, month: 6 , total_amount: 216500000},
-   { user_id: User.first.id, month: 7 , total_amount: 68790987},
+   { user_id: User.first.id, month: 6 , total_amount: 216500},
+   { user_id: User.first.id, month: 7 , total_amount: 68790},
    { user_id: User.first.id, month: 8 , total_amount: 332},
-   { user_id: User.first.id, month: 9 , total_amount: 652000},
+   { user_id: User.first.id, month: 9 , total_amount: 6520},
    { user_id: User.first.id, month: 10 , total_amount: 79},
    { user_id: User.first.id, month: 11, total_amount: 40}
 ]
