@@ -108,3 +108,30 @@ a, h1, h2, h3, p, label, #text {
   transform: translateY(2px);
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
 }
+
+.progress-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #333;
+
+  .progress-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .progress-bar-wrapper {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #81c784);
+    width: 0%; // Dynamically set this width based on @goal.target_progress
+    transition: width 0.5s ease-in-out;
+  }
+}

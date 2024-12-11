@@ -23,6 +23,25 @@ class Budget < ApplicationRecord
     }
   end
 
+  def generate_ai_content
+    formatted_expenses = expenses.map { |expense| "#{expense[:description]}: $#{expense[:amount]}" }.join(", ")
+
+    client = OpenAI::Client.new
+    begin
+      chatgpt_response = client.chat(parameters: {
+        model: "gpt-4",
+        messages: [
+          { role: "system", content: "You are a lifestyle auditor." },
+          { role: "user", content: "These are my expenses for this month: #{formatted_expenses} and this is my goal: #{self.user.goals.last.title} and it costs #{self.user.goals.last.target_amount}. Can you Rate my spending behavior and provide feedback and steps to be better in 30 words as travis scott" }
+        ]
+      })
+      chatgpt_response.dig("choices", 0, "message", "content") || "AI could not provide feedback."
+    rescue StandardError => e
+      Rails.logger.error("OpenAI API Error: #{e.message}")
+      "AI content generation failed."
+    end
+  end
+
   def total_expenses
     sum = 0
     expenses.each do |expense|
