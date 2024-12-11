@@ -25,7 +25,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
   background: linear-gradient(153deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
   backdrop-filter: blur(12px) brightness(1.2); /* Enhanced blur and brightness */
-  -webkit-backdrop-filter: blur(12px) brightness(1.2); /* For Safari support */
+  -webkit-backdrop-filter: blur(12px) brightness(0.2); /* For Safari support */
   margin-top: 40px;
   border-radius: 16px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */

@@ -22,12 +22,12 @@ export default class extends Controller {
             label: "",
             data: this.dataValue,
             backgroundColor: [
-              "#03dac6",
-              "#bb86fc"
+              "#FF4D00",
+              "#3A5044"
             ],
             borderColor: [
-              "03dac6",
-              "bb86fc"
+              "#FFAE8A",
+              "#686868"
             ],
             borderWidth: 0.3
           }]

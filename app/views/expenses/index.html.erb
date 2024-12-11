@@ -1,42 +1,39 @@
 <%= turbo_frame_tag :expenses do %>
- <div class="month">
-    <p class="title">
-      <%= @budget.month %></p>
+  <div class="container h-100">
+    <!-- Header Section -->
+    <div class="show">
+      <p><%= @budget.month.upcase %></p>
+        <div class="price-container">
+          Total: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>
+        </div>
       </div>
-<div class="show">
-  <div class="header">
-    <div class="price-container">
-      Total:
-      <span>R</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>
     </div>
-  </div>
 
-  <div>
-    <% if @expenses.any? %>
-      <div class="expense-lists">
+    <!-- Expenses List -->
+    <div>
+      <% if @expenses.any? %>
         <% @expenses.each do |expense| %>
-          <div class="list">
-            <div class="expense-info">
-              <p><%= number_to_currency(expense.amount) %></p>
-              <p> <%= expense.description %></p>
-              <div class="button-container">
-                <%= link_to "Edit", edit_expense_path(expense), class: "edit-button" %>
-                <%= link_to "Delete",
-                  expense_path(expense),
+          <div class="travis-card">
+            <p><%= number_to_currency(expense.amount) %></p>
+            <p><%= expense.description %></p>
+            <div class="travis-buttons">
+              <!-- Edit Button -->
+              <%= link_to "Edit", edit_expense_path(expense), class: "travis-button edit" %>
+              <!-- Delete Button -->
+              <%= link_to "Delete", expense_path(expense),
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: "delete-button" %>
-              </div>
+                  class: "travis-button delete" %>
             </div>
           </div>
         <% end %>
-      </div>
-    <% else %>
-      <p class="no-expenses-message">No expenses have been recorded for this month.</p>
-    <% end %>
-  </div>
+      <% else %>
+        <p class="no-expenses-message">No expenses have been recorded for this month.</p>
+      <% end %>
+    </div>
 
-  <div class="button-container">
-    <%= link_to "Add Expense", new_budget_expense_path, class: "add-expense-button" %>
+    <!-- Add Expense Button -->
+    <div class="button-container">
+      <%= link_to "Add Expense", new_budget_expense_path(@budget.id), class: "add-expense-button" %>
+    </div>
   </div>
-</div>
 <% end %>

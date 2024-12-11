@@ -1,38 +1,66 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://i.pinimg.com/474x/af/55/ef/af55ef6c4c0099913b25990bdebec696.jpg" %>
-    <% end %>
+      <%# <%= image_tag "https://i.pinimg.com/474x/af/55/ef/af55ef6c4c0099913b25990bdebec696.jpg" %>
+    <%# <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> %>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%# <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <%# <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
+          <%# </li>
           <li class="nav-item">
             <%= link_to "History", budgets_path, class: "nav-link" %>
-          </li>
+          <%# </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
-          </li>
+          <%# </li>
           <li class="nav-item dropdown">
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
              <%= link_to "History", budgets_path, class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <% link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
+              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%# <% link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+            <%# </div> %>
+          <%# </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%# </li> %>
+        <%# <% end %>
+      <%# </ul> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div> %>
+<footer class="mobile-footer">
+  <div class="footer-content">
+    <div class="footer-item">
+      <i class="fas fa-user-circle"></i>
+      <p>USER</p>
+    </div>
+    <div class="footer-item">
+      <i class="fas fa-chart-line"></i>
+      <p>EXPENSES</p>
+    </div>
+    <div class="footer-item">
+    <%= link_to new_budget_expense_path(current_user.budgets.last.id) do %>
+      <i class="fas fa-plus-circle"></i>
+      <p>ADD EXPENSE</p>
+      <% end %>
+    </div>
+    <div class="footer-item">
+    <%= link_to budgets_path do %>
+      <i class="fas fa-wallet"></i>
+      <p>BUDGET</p>
+      <% end %>
+    </div>
+    <div class="footer-item">
+      <i class="fas fa-bullseye"></i>
+      <p>GOALS</p>
     </div>
   </div>
-</div>
+</footer>
