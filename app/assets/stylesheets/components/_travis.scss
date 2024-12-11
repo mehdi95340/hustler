@@ -26,13 +26,11 @@
 }
 
 .travis-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
 
   .travis-button {
+    display: flex;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 6px 12px;
     border-radius: 12px;
     font-size: 0.9rem;
     font-weight: bold;
@@ -66,6 +64,7 @@
       color: #fff;
       border: 1px solid rgba(0, 0, 0, 0.2);
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+      height: 32px;
     }
 
     &.delete {
@@ -73,6 +72,12 @@
       color: #fff;
       border: 1px solid rgba(0, 0, 0, 0.2);
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+      height: 32px;
     }
   }
+}
+
+.travis {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
 }
