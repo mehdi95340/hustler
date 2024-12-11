@@ -2,6 +2,7 @@ class Budget < ApplicationRecord
   belongs_to :user
   has_many :expenses
   has_many :categories, through: :expenses
+  has_many :goals
 
   enum month: %i[january february march april may june july august september october november december]
 
@@ -41,6 +42,12 @@ class Budget < ApplicationRecord
   def at_zero?
     remaining_budget <= 0
   end
+
+  def saved_amount
+    total_expenses = expenses.sum(:amount)
+    return total_amount - total_expenses
+  end
+
   # Check if the budget is at zero and handle accordingly
   def check_budget_status
     if @budget.at_zero?
