@@ -1,0 +1,78 @@
+.travis-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Slightly lighter border */
+  background: linear-gradient(153deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(12px) brightness(0.9); /* Darker brightness */
+  -webkit-backdrop-filter: blur(12px) brightness(0.9); /* Darker brightness */
+  border-radius: 16px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
+  margin: 40px auto;
+  text-align: left;
+  width: 350px;
+
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, rgba(0, 0, 0, 0.05) 100%);
+  background-blend-mode: overlay;
+
+  p {
+    font-size: 1rem;
+    margin: 5px 0;
+    z-index: 1;
+    position: relative;
+  }
+}
+
+.travis-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+
+  .travis-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    &.edit {
+      background: linear-gradient(45deg, #1db954, #13a34c);
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    &.delete {
+      background: linear-gradient(45deg, #ff4500, #e63900);
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
