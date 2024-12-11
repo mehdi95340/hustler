@@ -36,6 +36,9 @@
     <%# </div> %>
   <%# </div> %>
 <%# </div> %>
+<% if current_user %>
+
+
 <footer class="mobile-footer">
   <div class="footer-content">
     <div class="footer-item">
@@ -59,8 +62,11 @@
       <% end %>
     </div>
     <div class="footer-item">
+    <%= link_to goals_path do %>
       <i class="fas fa-bullseye"></i>
       <p>GOALS</p>
+      <% end %>
     </div>
   </div>
 </footer>
+<% end %>

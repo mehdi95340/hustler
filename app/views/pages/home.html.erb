@@ -5,7 +5,7 @@
 <p>CONGRATS HOMIE, you're broke</p>
 </div>
 <% end %>
-<div class="home-container main-container">
+<div class="container">
 <div class="chart-container">
 
   <div class="chart">
@@ -15,20 +15,13 @@
                                data-chart-data-value="<%= chart_data.to_json%>"
                               >
     <canvas data-chart-target="canvas" width="200" height="200">
-  </div>
-  </div>
-  </div>
-  
 
 
-  <div class="btn-container">
-    <div class="buttons">
-        <%# <%= link_to "ADD AN EXPENSE", new_budget_expense_path(current_user.budgets.last.id), class: "action-btn" %>
-        <%= link_to "ALL EXPENSES", budget_expenses_path(current_user.budgets.last.id), class: "action-btn" %>
-        <%= link_to "BUDGET PLAN", budget_path(current_user.budgets.last.id), class: "action-btn" %>
-        <%= link_to "NEW BUDGET", new_budget_path, class: "action-btn" %>
-
-    </div>
   </div>
+  </div>
+    <p class="mt-5">YOU HAVE MADE <%= @goal.target_progress.round(2) %>% PROGRESS TOWARDS YOUR <%= @goal.title.upcase %> TARGET</p>
+  </div>
+
+
 
 </div>
