@@ -5,6 +5,8 @@
       <p><%= @budget.month.upcase %></p>
         <div class="price-container">
           Total: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %>
+
+          <p><strong>HUSTLER AI:</strong> <%= @feedback %></p>
         </div>
       </div>
     </div>

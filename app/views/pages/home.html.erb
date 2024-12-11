@@ -19,8 +19,19 @@
 
   </div>
   </div>
-    <p class="mt-5">YOU HAVE MADE <%= @goal.target_progress.round(2) %>% PROGRESS TOWARDS YOUR <%= @goal.title.upcase %> TARGET</p>
+  <% if @goal %>
+<div class="progress-container mt-5">
+  <p class="progress-text">
+    YOU HAVE MADE <%= @goal.target_progress.round(2) %>% PROGRESS TOWARDS YOUR <%= @goal.title.upcase %> TARGET
+  </p>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar" style="width: <%= @goal.target_progress.round(2) %>%;"></div>
   </div>
+</div>
+
+
+  <% end %>
+</div>
 
 
 

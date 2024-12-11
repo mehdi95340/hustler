@@ -15,19 +15,18 @@ users = [
 
  # Create budgets
  budgets = [
-   { user_id: User.first.id, month: 0, total_amount: 1023},
-   { user_id: User.first.id, month: 1 , total_amount: 3000},
-   { user_id: User.first.id, month: 2 , total_amount: 3050},
-   { user_id: User.first.id, month: 3 , total_amount: 4658},
-   { user_id: User.first.id, month: 4 , total_amount: 3200},
-   { user_id: User.first.id, month: 5 , total_amount: 3000},
-   { user_id: User.first.id, month: 6 , total_amount: 2165},
-   { user_id: User.first.id, month: 7 , total_amount: 6879},
-   { user_id: User.first.id, month: 8 , total_amount: 3320},
-   { user_id: User.first.id, month: 9 , total_amount: 6523},
-   { user_id: User.first.id, month: 10 , total_amount: 7986},
-   { user_id: User.first.id, month: 11, total_amount: 4122},
-
+   { user_id: User.first.id, month: 0, total_amount: 10230},
+   { user_id: User.first.id, month: 1 , total_amount: 30000},
+   { user_id: User.first.id, month: 2 , total_amount: 30500},
+   { user_id: User.first.id, month: 3 , total_amount: 46580},
+   { user_id: User.first.id, month: 4 , total_amount: 3},
+   { user_id: User.first.id, month: 5 , total_amount: 30000},
+   { user_id: User.first.id, month: 6 , total_amount: 216500000},
+   { user_id: User.first.id, month: 7 , total_amount: 68790987},
+   { user_id: User.first.id, month: 8 , total_amount: 332},
+   { user_id: User.first.id, month: 9 , total_amount: 652000},
+   { user_id: User.first.id, month: 10 , total_amount: 79},
+   { user_id: User.first.id, month: 11, total_amount: 40}
 ]
 
  budgets.each do |budget_attributes|
@@ -44,7 +43,7 @@ users = [
    { name: "Subscriptions Digital...", user_id: User.all.sample.id },
    { name: "Spaceships Cars...", user_id: User.all.sample.id },
    { name: "Ice Jewels...", user_id: User.all.sample.id },
-   { name: "Drip Clothes...", user_id: User.all.sample.id },
+   { name: "Drip Clothes...", user_id: User.all.sample.id }
   ]
 
   # Generate expense attributes for each category
