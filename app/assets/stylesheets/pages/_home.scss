@@ -6,6 +6,7 @@
 
 body {
   background: linear-gradient(138deg, #b00101 13.42%, #0f2776 60.01%, #cd0303 90.49%);
+  
 
 }
 
@@ -70,6 +71,42 @@ a, h1, h2, h3, p, label, #text {
     width: 100%;  // Ensure Turbo Frame takes the full width (if needed)
   }
 
+
+
+}
+
+.budget-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  background: linear-gradient(153deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(12px) brightness(0.2);
+   /*-webkit-backdrop-filter: blur(12px) brightness(0.2); /* For Safari support */
+   margin-top: 40px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  width: 300px;
+
+  background-blend-mode: overlay;
+  margin-left: 9%;
+
+}
+
+
+.budget-btn:hover {
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+.budget-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
 }
 
 .progress-container {
