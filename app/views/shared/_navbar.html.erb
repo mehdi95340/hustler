@@ -1,47 +1,45 @@
-
 <% if current_user %>
-
-<footer class="mobile-footer">
-  <div class="footer-content">
-    <%= link_to edit_user_registration_path(current_user.id) do %>
-      <div class="footer-item">
-        <i class="fas fa-user-circle"></i>
-      </div>
-    <% end %>
-    <% if current_user.budgets.last.id.nil? %>
-      <%= link_to budget_expenses_path(current_user.budgets.second_to_last.id) do %>
+  <footer class="mobile-footer">
+    <div class="footer-content">
+      <%= link_to edit_user_registration_path(current_user.id) do %>
         <div class="footer-item">
-          <i class="fas fa-chart-line"></i>
+          <i class="fas fa-user-circle"></i>
         </div>
+      <% end %>
+      <% if current_user.budgets.last.id.nil? %>
+        <%= link_to budget_expenses_path(current_user.budgets.second_to_last.id) do %>
+          <div class="footer-item">
+            <i class="fas fa-chart-line"></i>
+          </div>
         <% end %>
-      <%= link_to new_budget_expense_path(current_user.budgets.second_to_last.id) do %>
-        <div class="footer-item">
-         <i class="fas fa-plus-circle"></i>
-      </div>
+        <%= link_to new_budget_expense_path(current_user.budgets.second_to_last.id) do %>
+          <div class="footer-item">
+            <i class="fas fa-plus-circle"></i>
+          </div>
         <% end %>
-    <% else %>
-      <%= link_to budget_expenses_path(current_user.budgets.last.id) do %>
-      <div class="footer-item">
-        <i class="fas fa-chart-line"></i>
-      </div>
-    <% end %>
-      <%= link_to new_budget_expense_path(current_user.budgets.last.id) do %>
-      <div class="footer-item">
-        <i class="fas fa-plus-circle"></i>
-      </div>
+      <% else %>
+        <%= link_to budget_expenses_path(current_user.budgets.last.id) do %>
+          <div class="footer-item">
+            <i class="fas fa-chart-line"></i>
+          </div>
         <% end %>
-     <% end %>
+        <%= link_to new_budget_expense_path(current_user.budgets.last.id) do %>
+          <div class="footer-item">
+            <i class="fas fa-plus-circle"></i>
+          </div>
+        <% end %>
+      <% end %>
 
-    <div class="footer-item">
       <%= link_to budgets_path do %>
-        <i class="fas fa-wallet"></i>
+        <div class="footer-item">
+          <i class="fas fa-wallet"></i>
+        </div>
       <% end %>
-    </div>
-    <div class="footer-item">
       <%= link_to goals_path do %>
-        <i class="fas fa-bullseye"></i>
+        <div class="footer-item">
+          <i class="fas fa-bullseye"></i>
+        </div>
       <% end %>
     </div>
-  </div>
-</footer>
+  </footer>
 <% end %>

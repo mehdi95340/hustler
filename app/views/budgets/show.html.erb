@@ -4,20 +4,12 @@
     <p>BUDGET: $<%= @budget.remaining_budget %></p>
     <p>TOTAL EXPENSES: $<%= @budget.total_expenses %></p>
 
-
-
-
-<%= pie_chart @budget.expenses
+    <%= pie_chart @budget.expenses
                .joins(:category)
                .group('categories.name')
                .sum(:amount)
                .map { |category_name, total_amount| [category_name, total_amount] },
                donut: true %>
-
-
-
-
-
 
     <div class="expenses-category">
       <h2>EXPENSES BY CATEGORY:</h2>
@@ -40,11 +32,11 @@
       </div>
     </div>
 
-  <% @budget.expenses.each do |expense| %>
-    <div class="action-btn">
-    <%= expense.amount %> : <%= expense.category.name %>
-    </div>
-  <% end %>
-</div>
-
+    <% @budget.expenses.each do |expense| %>
+      <div class="action-btn">
+        <%= expense.amount %> : <%= expense.category.name %>
+      </div>
+    <% end %>
   </div>
+
+</div>
