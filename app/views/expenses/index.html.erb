@@ -15,18 +15,25 @@
     <div class="travis-card">
       <% if @expenses.any? %>
         <% @expenses.each do |expense| %>
-            <p><%= number_to_currency(expense.amount) %></p>
-            <p><%= expense.description %></p>
-            p
-            <p><%=  %></p>
-            <div class="travis-buttons">
-              <!-- Edit Button -->
-              <%= link_to "Edit", edit_expense_path(expense), class: "travis-button edit" %>
-              <!-- Delete Button -->
-              <%= link_to "Delete", expense_path(expense),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: "travis-button delete" %>
+            <div class="travis">
+              <div class="travis-info">
+                <p><%= number_to_currency(expense.amount) %></p>
+                <p><%= expense.description %></p>
+              </div>
+              <div class="travis-buttons">
+                <!-- Edit Button -->
+                <%= link_to edit_expense_path(expense), class: "travis-button edit" do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+                <!-- Delete Button -->
+                <%= link_to expense_path(expense),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                    class: "travis-button delete" do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
             </div>
+            <hr>
         <% end %>
       <% else %>
         <p class="no-expenses-message">No expenses have been recorded for this month.</p>
@@ -34,8 +41,5 @@
     </div>
 
     <!-- Add Expense Button -->
-    <div class="button-container">
-      <%= link_to "Add Expense", new_budget_expense_path(@budget.id), class: "action-btn" %>
-    </div>
   </div>
 <% end %>
