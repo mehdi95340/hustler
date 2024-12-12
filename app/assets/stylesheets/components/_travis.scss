@@ -62,17 +62,17 @@
     }
 
     &.edit {
-      background: linear-gradient(45deg, #1db954, #13a34c);
-      color: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+/*       background: linear-gradient(45deg, #1db954, #13a34c);
+ */      color: #fff;
+      border: 1px solid rgb(255, 255, 255);
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
       height: 32px;
     }
 
     &.delete {
-      background: linear-gradient(45deg, #ff4500, #e63900);
-      color: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+/*       background: linear-gradient(45deg, #ff4500, #e63900);
+ */      color: #fff;
+      border: 1px solid rgba(240, 233, 233, 0.93);
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
       height: 32px;
     }
