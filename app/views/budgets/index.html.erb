@@ -8,6 +8,7 @@
         <strong>
           <p class="month-b"><%= budget.month %></p>
         </strong>
+        
         <div class="budget-details">
           <% if budget.at_zero? %>
             <p> -$<%= budget.total_amount %></p>

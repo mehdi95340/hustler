@@ -4,12 +4,18 @@
     </div>
       <% @goals.each do |goal| %>
     <div class="show">
-          <p><%= goal.title.upcase %></p>
-          <p><%= goal.target_progress.round(0) %>%</p>
-          <p><%= current_user.total_saved %></p>
-          <p><%= goal.target_amount %></p>
-          <p><%= goal.description %></p>
-          <p><%= goal.due_date %></p>
+    <div class="page-wrapper">
+          <%# <p><%= current_user.total_saved %></p>
+          <div class="goal-container">
+            <p><%= goal.description %></p>
+            <h2><%= goal.title.upcase %></h2>
+            <strong>
+              <h1 class="target-progress"><%= goal.target_progress.round(0) %>%</h1>
+            </strong>
+            <p><i class="fa-solid fa-bullseye"></i>   <%= goal.target_amount %></p>
+            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date %></p>
+          </div>
+      </div>
     </div>
       <% end %>
   </div>
