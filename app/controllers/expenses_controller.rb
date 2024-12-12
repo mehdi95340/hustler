@@ -19,6 +19,8 @@ class ExpensesController < ApplicationController
   def new
     @budget = Budget.find(params[:budget_id])
     @expense = Expense.new
+    @goal_achieved = params[:goal_achieved]
+    @goal_id = params[:goal_id]
   end
 
   # GET /expenses/1/edit
@@ -35,6 +37,11 @@ class ExpensesController < ApplicationController
     @expense.budget = @budget
     @expense.date = Date.today
     @expense.category = @category if @category
+    if params[:goal_id]
+      @goal = Goal.find(params[:goal_id])
+      @goal.achieved = params[:goal_achieved]
+      @goal.save!
+    end
     if @expense.save!
       redirect_to expense_path(@expense), notice: "🤑"
     else

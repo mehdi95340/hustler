@@ -38,9 +38,9 @@ puts "Created #{categories.count} categories."
 
 puts "Creating goals..."
 goals = [
-  { title: "Lambo with flame throwers", target_amount: 2500000.0, due_date: Date.new(2024,12,31), achieved: false, description: "For my Mother" },
-  { title: "Jetski", target_amount: 50000.0, due_date: Date.new(2025,1,15), achieved: false, description: "To do flips and tricks" },
-  { title: "A limited edition Sword", target_amount: 10000.0, due_date: Date.new(2024,11,1), achieved: true, description: "I want this" },
+  { title: "Lambo with flame throwers", target_amount: 2500000.0, due_date: Date.new(2024,11,31), achieved: true, description: "For my Mother" },
+  { title: "Jetski", target_amount: 50000.0, due_date: Date.new(2024,1,15), achieved: false, description: "To do flips and tricks" },
+  { title: "A limited edition Sword", target_amount: 10000.0, due_date: Date.new(2024,10,1), achieved: true, description: "I want this" },
 ].map { |g| Goal.create!(g.merge(user: user)) }
 puts "Created #{goals.count} goals."
 
