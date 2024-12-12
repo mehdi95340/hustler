@@ -7,12 +7,12 @@ class ExpensesController < ApplicationController
   def index
     @expenses = @budget.expenses
     @budgets = Budget.all
-    @feedback = @budget.generate_ai_content
+    @feedback = @budget.review
   end
 
   # GET /expenses/1
   def show
-    @ai_feedback = @expense.generate_ai_content
+    @ai_feedback = @expense.review
   end
 
   # GET /budgets/:budget_id/expenses/new

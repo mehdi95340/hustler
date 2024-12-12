@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_11_113607) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_12_091952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_113607) do
     t.integer "month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "review"
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
@@ -40,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_11_113607) do
     t.bigint "category_id", null: false
     t.bigint "budget_id", null: false
     t.text "content"
+    t.text "review"
     t.index ["budget_id"], name: "index_expenses_on_budget_id"
     t.index ["category_id"], name: "index_expenses_on_category_id"
   end

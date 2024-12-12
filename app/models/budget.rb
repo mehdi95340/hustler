@@ -23,6 +23,14 @@ class Budget < ApplicationRecord
     }
   end
 
+  def review
+    if super.blank?
+      generate_ai_content
+    else
+      super
+    end
+  end
+
   def generate_ai_content
     formatted_expenses = expenses.map { |expense| "#{expense[:description]}: $#{expense[:amount]}" }.join(", ")
 
@@ -35,7 +43,9 @@ class Budget < ApplicationRecord
           { role: "user", content: "These are my expenses for this month: #{formatted_expenses} and this is my goal: #{self.user.goals.last.title} and it costs #{self.user.goals.last.target_amount}. Can you Rate my spending behavior and provide feedback and steps to be better in 30 words as travis scott" }
         ]
       })
-      chatgpt_response.dig("choices", 0, "message", "content") || "AI could not provide feedback."
+      answer = chatgpt_response.dig("choices", 0, "message", "content") || "AI could not provide feedback."
+      update(review: answer)
+    return answer
     rescue StandardError => e
       Rails.logger.error("OpenAI API Error: #{e.message}")
       "AI content generation failed."
