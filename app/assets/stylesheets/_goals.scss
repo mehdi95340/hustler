@@ -23,3 +23,20 @@
   justify-content: center;
   align-items: center;
 }
+
+h4, .blue-flame {
+  font-size: 2rem; // Adjust size as needed
+  color: rgb(197, 245, 1); // Base blue color
+  text-transform: uppercase; // Ensure the text is uppercase
+  text-shadow: 0 0 5px rgb(255, 204, 108), 0 0 10px rgb(245, 34, 34), 0 0 20px rgb(225, 45, 0), 0 0 40px #0ff, 0 0 80px #0ff;
+  animation: electric-blue-glow 1.5s infinite alternate;
+
+  @keyframes electric-blue-glow {
+    0% {
+      text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f, 0 0 40px #0ff, 0 0 80px #0ff;
+    }
+    100% {
+      text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0ff, 0 0 60px #0ff, 0 0 100px #0ff;
+    }
+  }
+}
