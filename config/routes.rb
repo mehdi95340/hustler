@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
 
     # Root route
-    root to: "pages#home"
+    root to: "goals#index"
 
   # Actions route
   get "actions", to: "pages#actions", as: :actions
