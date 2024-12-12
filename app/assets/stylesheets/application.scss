@@ -14,3 +14,12 @@
 .h-100 {
   min-height: 100vh;
 }
+body {
+  background-image: url('travis.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding-bottom: 12vh;
+}

@@ -2,6 +2,7 @@ class Budget < ApplicationRecord
   belongs_to :user
   has_many :expenses
   has_many :categories, through: :expenses
+  has_many :goals
 
   enum month: %i[january february march april may june july august september october november december]
 
@@ -20,6 +21,25 @@ class Budget < ApplicationRecord
       november: 10,
       december: 11
     }
+  end
+
+  def generate_ai_content
+    formatted_expenses = expenses.map { |expense| "#{expense[:description]}: $#{expense[:amount]}" }.join(", ")
+
+    client = OpenAI::Client.new
+    begin
+      chatgpt_response = client.chat(parameters: {
+        model: "gpt-4",
+        messages: [
+          { role: "system", content: "You are a lifestyle auditor." },
+          { role: "user", content: "These are my expenses for this month: #{formatted_expenses} and this is my goal: #{self.user.goals.last.title} and it costs #{self.user.goals.last.target_amount}. Can you Rate my spending behavior and provide feedback and steps to be better in 30 words as travis scott" }
+        ]
+      })
+      chatgpt_response.dig("choices", 0, "message", "content") || "AI could not provide feedback."
+    rescue StandardError => e
+      Rails.logger.error("OpenAI API Error: #{e.message}")
+      "AI content generation failed."
+    end
   end
 
   def total_expenses
@@ -41,6 +61,12 @@ class Budget < ApplicationRecord
   def at_zero?
     remaining_budget <= 0
   end
+
+  def saved_amount
+    total_expenses = expenses.sum(:amount)
+    return total_amount - total_expenses
+  end
+
   # Check if the budget is at zero and handle accordingly
   def check_budget_status
     if @budget.at_zero?

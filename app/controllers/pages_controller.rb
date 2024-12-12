@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   # GET /home
   def home
     if current_user
+      @goal = current_user.goals.last
       @current_budget = current_user.budgets.last
       if @current_budget
         @remaining_budget = @current_budget.remaining_budget
