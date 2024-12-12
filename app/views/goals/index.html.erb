@@ -9,11 +9,22 @@
           <div class="goal-container">
             <p><%= goal.description %></p>
             <h2><%= goal.title.upcase %></h2>
+            <% if goal.target_progress >= 100 %>
+            <div class="glitch">
+            <h4>
+            <br>
+            <%= link_to "READY TO PURCHASE", new_budget_expense_path(current_user.budgets.last), class: "blue-flame" %>
+            </h4>
+
+
+            </div>
+          <% else %>
             <strong>
               <h1 class="target-progress"><%= goal.target_progress.round(0) %>%</h1>
             </strong>
             <p><i class="fa-solid fa-bullseye"></i>   <%= goal.target_amount %></p>
             <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date %></p>
+          <% end %>
           </div>
       </div>
     </div>
