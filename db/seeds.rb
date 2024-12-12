@@ -1,179 +1,148 @@
-# Delete all existing data
+puts "Clearing existing records..."
 Expense.destroy_all
-Category.destroy_all
 Budget.destroy_all
+Category.destroy_all
+Goal.destroy_all
 User.destroy_all
+puts "All old records destroyed."
 
-# Create users
-users = [
-  { email: "test@test.com", password: "123456"},
+puts "Creating user..."
+user = User.create!(
+  email: "test@test.com",
+  password: "123456"
+)
+puts "User created: #{user.email}"
 
-]
- users.each do |user_attributes|
-  User.create!(user_attributes)
- end
-
- # Create budgets
- budgets = [
-   { user_id: User.first.id, month: 0, total_amount: 10230},
-   { user_id: User.first.id, month: 1 , total_amount: 30000},
-   { user_id: User.first.id, month: 2 , total_amount: 30500},
-   { user_id: User.first.id, month: 3 , total_amount: 46580},
-   { user_id: User.first.id, month: 4 , total_amount: 3},
-   { user_id: User.first.id, month: 5 , total_amount: 30000},
-   { user_id: User.first.id, month: 6 , total_amount: 216500},
-   { user_id: User.first.id, month: 7 , total_amount: 68790},
-   { user_id: User.first.id, month: 8 , total_amount: 332},
-   { user_id: User.first.id, month: 9 , total_amount: 6520},
-   { user_id: User.first.id, month: 10 , total_amount: 79},
-   { user_id: User.first.id, month: 11, total_amount: 40}
-]
-
- budgets.each do |budget_attributes|
-  Budget.create!(budget_attributes)
- end
-
- # Create categories
- categories = [
-   { name: "Entertainment", user_id: User.all.sample.id },
-   { name: "Restaurant", user_id: User.all.sample.id  },
-   { name: "Groceries", user_id: User.all.sample.id },
-   { name: "Transport", user_id: User.all.sample.id },
-   { name: "Personal Care", user_id: User.all.sample.id },
-   { name: "Subscriptions Digital...", user_id: User.all.sample.id },
-   { name: "Spaceships Cars...", user_id: User.all.sample.id },
-   { name: "Ice Jewels...", user_id: User.all.sample.id },
-   { name: "Drip Clothes...", user_id: User.all.sample.id }
-  ]
-
-  # Generate expense attributes for each category
-categories_expenses = {
-  "Entertainment" => [
-    { amount: 150.0, description: "Movie tickets", date: Time.current - 3.days },
-    { amount: 50.0, description: "Streaming subscription", date: Time.current - 15.days },
-    { amount: 80.0, description: "Concert ticket", date: Time.current - 25.days }
-  ],
-  "Restaurant" => [
-    { amount: 60.0, description: "Dinner at a fancy place", date: Time.current - 2.days },
-    { amount: 20.0, description: "Lunch with colleagues", date: Time.current - 10.days },
-    { amount: 35.0, description: "Weekend brunch", date: Time.current - 20.days }
-  ],
-  "Groceries" => [
-    { amount: 200.0, description: "Weekly grocery shopping", date: Time.current - 7.days },
-    { amount: 45.0, description: "Quick trip for fresh produce", date: Time.current - 14.days },
-    { amount: 120.0, description: "Monthly bulk shopping", date: Time.current - 30.days }
-  ],
-  "Transport" => [
-    { amount: 100.0, description: "Monthly metro pass", date: Time.current - 1.days },
-    { amount: 15.0, description: "Ride-share to work", date: Time.current - 9.days },
-    { amount: 60.0, description: "Gas refill", date: Time.current - 18.days }
-  ],
-  "Personal Care" => [
-    { amount: 45.0, description: "Haircut", date: Time.current - 5.days },
-    { amount: 25.0, description: "Skincare products", date: Time.current - 12.days },
-    { amount: 15.0, description: "Gym session", date: Time.current - 28.days }
-  ],
-  "Subscriptions Digital..." => [
-    { amount: 15.0, description: "Music streaming subscription", date: Time.current - 6.days },
-    { amount: 12.0, description: "Cloud storage plan", date: Time.current - 13.days },
-    { amount: 20.0, description: "Online course subscription", date: Time.current - 29.days }
-  ],
-  "Spaceships Cars..." => [
-    { amount: 500.0, description: "Spaceship fuel", date: Time.current - 3.days },
-    { amount: 300.0, description: "Spaceship maintenance", date: Time.current - 21.days }
-  ],
-  "Ice Jewels..." => [
-    { amount: 2000.0, description: "Rare diamond necklace", date: Time.current - 17.days },
-    { amount: 1200.0, description: "Sapphire bracelet", date: Time.current - 25.days }
-  ],
-  "Drip Clothes..." => [
-    { amount: 300.0, description: "Luxury shoes", date: Time.current - 7.days },
-    { amount: 150.0, description: "Designer hoodie", date: Time.current - 19.days }
-  ]
-}
-
-categories.each do |categories_attributes|
-  category = Category.create!(categories_attributes)
+# Helper method to generate a realistic date within a given month of 2024
+def random_date_in_month(year, month)
+  # Ensure the month is valid and year is set. For the demo in December 2024,
+  # we'll assume historical budgets for previous months of 2024.
+  day = rand(1..28) # keep it simple, to avoid invalid dates for short months
+  DateTime.new(year, month, day, rand(8..23), rand(0..59))
 end
 
+puts "Creating categories..."
+categories = [
+  "Concert Tickets",
+  "Luxury Hotels",
+  "Designer Clothes",
+  "Chainz & Bling",
+  "Bottles at the Club",
+  "Hypebeast Gear",
+  "Exclusive Sneaker Drops",
+  "Exotic Car Rentals"
+].map do |cat_name|
+  Category.create!(name: cat_name, user: user)
+end
+puts "Created #{categories.count} categories."
 
-  budgets = Budget.all
-  categories = Category.all
-  budgets.each do |budget|
-    categories.each do |category|
-      categories_expenses[category.name].each do |expense_attributes|
-        expense = Expense.new(expense_attributes)
-        expense.category = category
-        expense.budget = budget
-        expense.save!
-      end
+puts "Creating goals..."
+goals = [
+  { title: "Lambo with flame throwers", target_amount: 2500000.0, due_date: Date.new(2024,12,31), achieved: false, description: "For my Mother" },
+  { title: "Jetski", target_amount: 50000.0, due_date: Date.new(2025,1,15), achieved: false, description: "To do flips and tricks" },
+  { title: "A limited edition Sword", target_amount: 10000.0, due_date: Date.new(2024,11,1), achieved: true, description: "I want this" },
+].map { |g| Goal.create!(g.merge(user: user)) }
+puts "Created #{goals.count} goals."
+
+puts "Creating budgets and expenses..."
+
+# We'll create budgets for a few previous months plus December for the demo.
+# Let's say from September (9) to December (12)
+budgets_data = [
+  { month: 8,  total_amount: 8000.0,  review: "September was all about that NYC Fashion Week drip." },
+  { month: 9, total_amount: 12000.0, review: "October got spooky with high-end parties." },
+  { month: 10, total_amount: 15000.0, review: "November included early holiday shopping and some chill events." },
+  { month: 11, total_amount: 20000.0, review: "December: end of year blowout, lavish gifts and celebrations." }
+]
+
+budgets_data.each do |b_data|
+  budget = Budget.create!(
+    user: user,
+    month: b_data[:month],
+    total_amount: b_data[:total_amount],
+    review: b_data[:review]
+  )
+
+  # For each budget, create a handful of expenses.
+  # We'll pick random categories and assign expenses within that month.
+
+  expense_count = case b_data[:month]
+                  when 8 then 7 # fewer in December so far, maybe will add more later?
+                  when 9  then 5
+                  when 10 then 6
+                  when 11 then 4
+                  end
+
+  expense_count.times do
+    cat = categories.sample
+    expense_amount = rand(100..3000).to_f
+
+    # Description and content vary by category to give some realism
+    description, content, review = case cat.name
+    when "Concert Tickets"
+      [
+        "Front row seat at a major show.",
+        "Splurged on VIP tickets.",
+        "Worth every penny for that front-row experience."
+      ]
+    when "Luxury Hotels"
+      [
+        "Stayed at The Ritz for a weekend.",
+        "Suite upgrade with late checkout.",
+        "Lavish room service and spa treatments."
+      ]
+    when "Designer Clothes"
+      [
+        "Picked up new Louis Vuitton pieces.",
+        "Limited edition collab drop.",
+        "High-fashion drip on point."
+      ]
+    when "Chainz & Bling"
+      [
+        "New diamond-studded pendant.",
+        "Custom iced-out grill.",
+        "Shining brighter than the stage lights."
+      ]
+    when "Bottles at the Club"
+      [
+        "VIP table bottle service.",
+        "Popped some Ace of Spades.",
+        "Party all night, no regrets."
+      ]
+    when "Hypebeast Gear"
+      [
+        "Copped some Supreme & BAPE.",
+        "New Off-White hoodie.",
+        "Streetwear dripping all day."
+      ]
+    when "Exclusive Sneaker Drops"
+      [
+        "Got the latest Jordans on release.",
+        "Yeezy season never ends.",
+        "Feet got more ice than my neck."
+      ]
+    when "Exotic Car Rentals"
+      [
+        "Whipped a Lambo for the weekend.",
+        "Rented a Bentley Bentayga.",
+        "Cruising the city in style."
+      ]
     end
 
+    # The date for the expense must match the budget month
+    expense_date = random_date_in_month(2024, b_data[:month])
+
+    Expense.create!(
+      amount: expense_amount,
+      description: description,
+      date: expense_date,
+      category: cat,
+      budget: budget,
+      content: content,
+      review: review
+    )
   end
+  puts "Created #{expense_count} expenses for month #{b_data[:month]}."
+end
 
-  # Create expenses
-
-
-#   expenses = [
-#   { budget_id: Budget.first.id, category_id: Category.first.id, amount: 1500, description: "Weekly groceries" },
-#   { budget_id: Budget.first.id, category_id: Category.second.id, amount: 50, description: "Ice cream" },
-#   { budget_id: Budget.first.id, category_id: Category.third.id, amount: 100, description: "Gasoline" },
-#   { budget_id: Budget.first.id, category_id: Category.fourth.id, amount: 200, description: "Transport costs" },
-#   { budget_id: Budget.first.id, category_id: Category.fifth.id, amount: 300, description: "Personal care products" },
-
-#   { budget_id: Budget.second.id, category_id: Category.first.id, amount: 250, description: "Groceries" },
-#   { budget_id: Budget.second.id, category_id: Category.second.id, amount: 30, description: "Takeout food" },
-#   { budget_id: Budget.second.id, category_id: Category.third.id, amount: 80, description: "Bus pass" },
-#   { budget_id: Budget.second.id, category_id: Category.fourth.id, amount: 100, description: "Uber ride" },
-#   { budget_id: Budget.second.id, category_id: Category.fifth.id, amount: 120, description: "Haircut" },
-
-#   { budget_id: Budget.third.id, category_id: Category.first.id, amount: 350, description: "Supermarket shopping" },
-#   { budget_id: Budget.third.id, category_id: Category.second.id, amount: 60, description: "Lunch with friends" },
-#   { budget_id: Budget.third.id, category_id: Category.third.id, amount: 200, description: "Fuel" },
-#   { budget_id: Budget.third.id, category_id: Category.fourth.id, amount: 150, description: "Parking" },
-#   { budget_id: Budget.third.id, category_id: Category.fifth.id, amount: 250, description: "Spa treatment" },
-
-#   { budget_id: Budget.fourth.id, category_id: Category.first.id, amount: 180, description: "Weekly grocery shopping" },
-#   { budget_id: Budget.fourth.id, category_id: Category.second.id, amount: 40, description: "Dinner" },
-#   { budget_id: Budget.fourth.id, category_id: Category.third.id, amount: 90, description: "Gas station" },
-#   { budget_id: Budget.fourth.id, category_id: Category.fourth.id, amount: 70, description: "Train fare" },
-#   { budget_id: Budget.fourth.id, category_id: Category.fifth.id, amount: 130, description: "Facial treatment" },
-
-#   { budget_id: Budget.fifth.id, category_id: Category.first.id, amount: 1000, description: "Groceries for the week" },
-#   { budget_id: Budget.fifth.id, category_id: Category.second.id, amount: 150, description: "Dining out" },
-#   { budget_id: Budget.fifth.id, category_id: Category.third.id, amount: 200, description: "Fuel expenses" },
-#   { budget_id: Budget.fifth.id, category_id: Category.fourth.id, amount: 180, description: "Taxi ride" },
-#   { budget_id: Budget.fifth.id, category_id: Category.fifth.id, amount: 100, description: "Hair care" }
-# ]
-
-
-#  expenses.each do |expense_attributes|
-#   Expense.create!(expense_attributes)
-#  end
-
-  puts "Seeds was created succesfully! with #{Expense.count} expenses"
-
-#  category_name = "Fitness & Health" # new category name
-#  user_id = User.all.sample.id   #assign random user
-
-#  category = Category.find_or_create_by!(name: category_name, user_id: user_id) #check category exist if not create it
-
-#  #create new expense
-#  Expense.create!(
-#   budget_id: Budget.first.id,
-
-#   category_id: category.id,
-#   amount: 100,
-#   description: "Gym subscription"
-#  )
-
-#  puts "New category and expense created: #{category_name}"
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+puts "Seeding complete!"
