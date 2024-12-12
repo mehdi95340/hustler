@@ -22,5 +22,8 @@ body {
   background-repeat: no-repeat;
   color: #fff;
   padding-bottom: 12vh;
+  p {
+    font-family: $body-font;
+    letter-spacing: 2px;
+  }
 }
-
