@@ -3,20 +3,22 @@
   <%= link_to "New Budget", new_budget_path, class: "budget-btn" %>
   <% @budgets.each do |budget| %>
     <div class="budget-card">
-      <%= link_to budget_path(budget) do %>
+      <%= link_to budget_expenses_path(budget) do %>
 
-      <strong><p class="month-b"><%= budget.month %></p></strong>
-      <div class="budget-details">
-        <% if budget.at_zero? %>
-        <p> -$<%= budget.total_amount %></p>
-          <i class="fa-solid fa-heart-crack"></i>
-        <% else %>
-        <p> +$<%= budget.total_amount %></p>
-          <i class="fa-solid fa-hand-holding-dollar"></i>
-        <% end %>
+        <strong>
+          <p class="month-b"><%= budget.month %></p>
+        </strong>
+        <div class="budget-details">
+          <% if budget.at_zero? %>
+            <p> -$<%= budget.total_amount %></p>
+            <i class="fa-solid fa-heart-crack"></i>
+          <% else %>
+            <p> +$<%= budget.total_amount %></p>
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          <% end %>
 
-        <%# else statement for icon if not zero %>
-      </div>
+          <%# else statement for icon if not zero %>
+        </div>
 
       <% end %>
     </div>
