@@ -10,9 +10,10 @@
   -webkit-backdrop-filter: blur(12px) brightness(0.9); /* Darker brightness */
   border-radius: 16px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
-  margin: 40px auto;
+  margin: 16px auto;
   text-align: left;
   width: 350px;
+  height: 120px;
 
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, rgba(0, 0, 0, 0.05) 100%);
   background-blend-mode: overlay;
