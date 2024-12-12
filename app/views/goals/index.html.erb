@@ -13,9 +13,14 @@
             <div class="glitch">
             <h4>
             <br>
-            <%= link_to "READY TO PURCHASE", new_budget_expense_path(current_user.budgets.last), class: "blue-flame" %>
+            <%= link_to "READY TO PURCHASE", new_budget_expense_path(current_user.budgets.last, goal_achieved: true), class: "blue-flame" %>
             </h4>
-
+          <% elsif goal.achieved %>
+            <div class="glitch">
+            <h4>
+            <br>
+            <p>SUCCESS</p>
+            </h4>
 
             </div>
           <% else %>
