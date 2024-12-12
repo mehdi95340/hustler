@@ -6,7 +6,8 @@
       <div class="price-container">
        <h1 class="text-center mb-3"> Total: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
 
-        <p>HUSTLER AI: <%= @feedback %></p>
+        <p>HUSTLER AI:</p>
+        <p><%= @feedback %></p>
       </div>
       <%= pie_chart @budget.expenses
                .joins(:category)
@@ -25,14 +26,7 @@
               </div>
             <% end %>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+
         </div>
       </div>
     </div>
@@ -44,9 +38,9 @@
       <div class="travis-card">
         <div class="travis">
           <div class="travis-info">
-            <h3><%= number_to_currency(expense.amount) %></h3>
+            <p><%= expense.category.name %></p>
+            <h2 class="my-3"><%= number_to_currency(expense.amount) %></h2>
             <p><%= expense.description %></p>
-            <p>(<%= expense.category.name %>)</p>
           </div>
           <div class="travis-buttons">
             <!-- Edit Button -->
@@ -61,7 +55,6 @@
             <% end %>
           </div>
         </div>
-        <hr>
       </div>
     <% end %>
   <% else %>

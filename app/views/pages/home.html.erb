@@ -5,6 +5,7 @@
   </div>
 <% end %>
 <div class="container">
+<h1 class="text-center mt-3"><%= @current_budget.month %></h1>
   <div class="chart-container">
 
     <div class="chart">
@@ -15,22 +16,19 @@
                               >
         <canvas data-chart-target="canvas" width="200" height="200">
 
+        </div>
+      </div>
+      <% if @goal %>
+        <div class="progress-container mt-5">
+          <p class="progress-text">
+            YOU HAVE MADE <%= @goal.target_progress.round(2) %>% PROGRESS TOWARDS YOUR <%= @goal.title.upcase %> TARGET
+          </p>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar" style="width: <%= @goal.target_progress.round(2) %>%;"></div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
   </div>
-  </div>
-  <% if @goal %>
-<div class="progress-container mt-5">
-  <p class="progress-text">
-    YOU HAVE MADE <%= @goal.target_progress.round(2) %>% PROGRESS TOWARDS YOUR <%= @goal.title.upcase %> TARGET
-  </p>
-  <div class="progress-bar-wrapper">
-    <div class="progress-bar" style="width: <%= @goal.target_progress.round(2) %>%;"></div>
-  </div>
-</div>
-
-
-  <% end %>
-</div>
-
-
-
-</div>
