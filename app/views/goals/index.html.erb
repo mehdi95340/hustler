@@ -13,8 +13,11 @@
             <div class="glitch">
             <h4>
             <br>
-            <%= link_to "READY TO PURCHASE", new_budget_expense_path(current_user.budgets.last, goal_achieved: true), class: "blue-flame" %>
+            <%= link_to "READY TO PURCHASE", new_budget_expense_path(current_user.budgets.last, goal_achieved: true, goal_id: goal.id), class: "blue-flame" %>
             </h4>
+            </div>
+            <p><i class="fa-solid fa-bullseye"></i>   <%= goal.target_amount %></p>
+            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date %></p>
           <% elsif goal.achieved %>
             <div class="glitch">
             <h4>
