@@ -1,6 +1,6 @@
-<div class="container h-100" >
+<div class="main-container h-100" >
   <!-- Edit Button -->
-  <%= link_to "New Budget", new_budget_path, class: "budget-btn" %>
+  <%= link_to "New Budget", new_budget_path, class: "action-btn mt1" %>
   <% @budgets.each do |budget| %>
     <div class="budget-card">
       <%= link_to budget_expenses_path(budget) do %>
@@ -8,7 +8,7 @@
         <strong>
           <p class="month-b"><%= budget.month %></p>
         </strong>
-        
+
         <div class="budget-details">
           <% if budget.at_zero? %>
             <p> -$<%= budget.total_amount %></p>

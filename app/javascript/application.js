@@ -6,4 +6,3 @@ import "bootstrap"
 import "chart.js"
 import "chartkick"
 import "Chart.bundle"
-

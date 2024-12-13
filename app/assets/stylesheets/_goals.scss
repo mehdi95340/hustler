@@ -24,12 +24,18 @@
   align-items: center;
 }
 
-h4, .blue-flame {
-  font-size: 2rem; // Adjust size as needed
-  color: rgb(197, 245, 1); // Base blue color
-  text-transform: uppercase; // Ensure the text is uppercase
+.electric-blue-flame {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: rgb(197, 245, 1);
+  text-transform: uppercase;
   text-shadow: 0 0 5px rgb(255, 204, 108), 0 0 10px rgb(245, 34, 34), 0 0 20px rgb(225, 45, 0), 0 0 40px #0ff, 0 0 80px #0ff;
   animation: electric-blue-glow 1.5s infinite alternate;
+
+  h4 {
+    font-family: 'Orbitron';
+  }
+
 
   @keyframes electric-blue-glow {
     0% {
@@ -38,5 +44,34 @@ h4, .blue-flame {
     100% {
       text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0ff, 0 0 60px #0ff, 0 0 100px #0ff;
     }
+  }
+}
+
+.blue-flame {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: rgb(197, 245, 1);
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgb(0, 29, 250), 0 0 10px rgb(9, 1, 242), 0 0 20px rgb(0, 86, 225);
+}
+
+.red-flame {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: rgb(197, 245, 1);
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgb(220, 3, 3);
+}
+
+.electric-blue-flame-2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: rgb(208, 209, 241);
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgb(255, 204, 108), 0 0 10px rgb(245, 34, 34), 0 0 20px rgb(225, 45, 0), 0 0 40px rgb(255, 145, 0), 0 0 80px rgb(255, 200, 0);
+  animation: electric-yellow-glow 1.5s infinite alternate;
+
+  h4 {
+    font-family: 'Orbitron';
   }
 }

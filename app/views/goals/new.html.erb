@@ -1,4 +1,4 @@
-<div class="container">
+<div class="pg-container">
   <div class="add-container">
     <div class="category">
     </div>
@@ -6,13 +6,14 @@
     <div class="price">
         <%= f.input :title %>
         <%= f.input :target_amount %>
-        <%= f.input :description %>
+        <%= f.input :description, label: "Motivation" %>
         <%= f.input :due_date %>
-    <div class="expense-btn">
-        <%= f.submit "SUBMIT", class: "budget-btn" %>
+
     </div>
+    <div class="create-a-goal">
+        <%= f.submit "SUBMIT", class: "action-btn" %>
     </div>
     <% end %>
   </div>
-  <%# <%= link_to "BACK", root_path, class: "budget-btn" %> 
+  <%# <%= link_to "BACK", root_path, class: "budget-btn" %>
 </div>
