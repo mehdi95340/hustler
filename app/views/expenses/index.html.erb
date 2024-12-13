@@ -1,10 +1,10 @@
 <%= turbo_frame_tag :expenses do %>
   <div class="container h-25">
     <!-- Header Section -->
-      <h1 class="text-center mt-3"><%= @budget.month.upcase %></h1>
+    <h1 class="text-center mt-3"><%= @budget.month.upcase %></h1>
     <div class="show">
       <div class="price-container">
-       <h1 class="text-center mb-3"> Total: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
+        <h1 class="text-center mb-3"> Total: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
 
         <p>HUSTLER AI:</p>
         <p><%= @feedback %></p>
@@ -36,6 +36,7 @@
   <% if @expenses.any? %>
     <% @expenses.each do |expense| %>
       <div class="travis-card">
+        <%= link_to expense_path(expense) do %>
         <div class="travis">
           <div class="travis-info">
             <p><%= expense.category.name %></p>
@@ -55,6 +56,7 @@
             <% end %>
           </div>
         </div>
+        <% end %>
       </div>
     <% end %>
   <% else %>

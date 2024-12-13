@@ -1,28 +1,30 @@
 <%= turbo_frame_tag :expenses do %>
 
-<div class="container">
-  <div class="add-container">
-    <div class="category">
+  <div class="container mt-5">
+    <div><h1 class="text-centre">SPENT IT</h1>
     </div>
-     <%= simple_form_for [@budget, @expense] do |f| %>
-    <div class="price">
-        <%= f.input :amount %>
-        <%= f.input :description %>
-        <%= f.association :category, collection: Category.where(user: current_user)  %>
-        <p>OR</p>
-        <%= text_field_tag :new_category, nil, placeholder: "Enter a new category", class: "form-control" %>
-        <% if params[:goal_id] %>
-          <%= hidden_field_tag :goal_achieved, @goal_achieved %>
-          <%= hidden_field_tag :goal_id, @goal_id %>
-        <% end %>
+    <div class="add-container">
+      <div class="category">
+      </div>
+      <%= simple_form_for [@budget, @expense] do |f| %>
+        <div class="price">
+          <%= f.input :amount %>
+          <%= f.input :description %>
+          <%= f.association :category, collection: Category.where(user: current_user)  %>
+          <p>OR</p>
+          <%= text_field_tag :new_category, nil, placeholder: "Enter a new category", class: "form-control" %>
+          <% if params[:goal_id] %>
+            <%= hidden_field_tag :goal_achieved, @goal_achieved %>
+            <%= hidden_field_tag :goal_id, @goal_id %>
+          <% end %>
 
-    <div class="expense-btn">
-        <%= f.submit "SUBMIT", class: "action-btn" %>
+          <div class="expense-btn">
+            <%= f.submit "SUBMIT", class: "action-btn" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    </div>
-    <% end %>
+    <%# <%= link_to "BACK", root_path, class: "action-btn" %>
+
   </div>
-  <%# <%= link_to "BACK", root_path, class: "action-btn" %> 
-
-</div>
 <% end %>
