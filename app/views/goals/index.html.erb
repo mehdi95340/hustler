@@ -2,7 +2,7 @@
     <div class="create-a-goal">
     <%= link_to "NEW GOAL", new_goal_path, class: "action-btn"%>
     </div>
-      <% @goals.each do |goal| %>
+      <% @goals.reverse.each do |goal| %>
     <div class="show">
     <div class="page-wrapper">
           <%# <p><%= current_user.total_saved %></p>

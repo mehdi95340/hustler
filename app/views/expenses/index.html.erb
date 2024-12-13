@@ -63,7 +63,7 @@
 
   <!-- Expenses List -->
   <% if @expenses.any? %>
-    <% @expenses.each do |expense| %>
+    <% @expenses.reverse.each do |expense| %>
       <div class="travis-card">
         <%= link_to expense_path(expense) do %>
         <div class="travis">

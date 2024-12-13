@@ -15,8 +15,6 @@ puts "User created: #{user.email}"
 
 # Helper method to generate a realistic date within a given month of 2024
 def random_date_in_month(year, month)
-  # Ensure the month is valid and year is set. For the demo in December 2024,
-  # we'll assume historical budgets for previous months of 2024.
   day = rand(1..28) # keep it simple, to avoid invalid dates for short months
   DateTime.new(year, month, day, rand(8..23), rand(0..59))
 end
@@ -38,19 +36,18 @@ puts "Created #{categories.count} categories."
 
 puts "Creating goals..."
 goals = [
-  { title: "Lambo with flame throwers", target_amount: 2500000.0, due_date: Date.new(2024,11,31), achieved: true, description: "For my Mother" },
+  { title: "Lambo with flame throwers", target_amount: 2500000.0, due_date: Date.new(2024,11,30), achieved: true, description: "For my Mother" },
   { title: "Jetski", target_amount: 50000.0, due_date: Date.new(2024,1,15), achieved: false, description: "To do flips and tricks" },
   { title: "A limited edition Sword", target_amount: 10000.0, due_date: Date.new(2024,10,1), achieved: true, description: "I want this" },
 ].map { |g| Goal.create!(g.merge(user: user)) }
+
 puts "Created #{goals.count} goals."
 
 puts "Creating budgets and expenses..."
 
-# We'll create budgets for a few previous months plus December for the demo.
-# Let's say from September (9) to December (12)
 budgets_data = [
   { month: 8,  total_amount: 8000.0,  review: "September was all about that NYC Fashion Week drip." },
-  { month: 9, total_amount: 12000.0, review: "October got spooky with high-end parties." },
+  { month: 9,  total_amount: 12000.0, review: "October got spooky with high-end parties." },
   { month: 10, total_amount: 15000.0, review: "November included early holiday shopping and some chill events." },
   { month: 11, total_amount: 20000.0, review: "December: end of year blowout, lavish gifts and celebrations." }
 ]
@@ -63,15 +60,15 @@ budgets_data.each do |b_data|
     review: b_data[:review]
   )
 
-  # For each budget, create a handful of expenses.
-  # We'll pick random categories and assign expenses within that month.
+  # Increase the expense count for all months
+  additional_expenses = case b_data[:month]
+                        when 8 then 5 # Add 5 more for August
+                        when 9 then 7 # Add 7 more for September
+                        when 10 then 6 # Add 6 more for October
+                        when 11 then 10 # Add 10 more for November
+                        end
 
-  expense_count = case b_data[:month]
-                  when 8 then 7 # fewer in December so far, maybe will add more later?
-                  when 9  then 5
-                  when 10 then 6
-                  when 11 then 4
-                  end
+  expense_count = additional_expenses + 4 # Original count + additional expenses
 
   expense_count.times do
     cat = categories.sample

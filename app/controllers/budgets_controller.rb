@@ -4,12 +4,12 @@ class BudgetsController < ApplicationController
 
   # GET /budgets
   def index
-    @budgets = current_user.budgets
+    @budgets = current_user.budgets.order(created_at: :desc)
   end
 
   # GET /budgets/1
   def show
-    
+
   end
 
   # GET /budgets/new
