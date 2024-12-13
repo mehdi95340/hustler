@@ -1,8 +1,10 @@
 <div>
 <%= turbo_frame_tag :expenses do %>
+<div class="main-container mt-4">
   <%= simple_form_for(@budget) do |f| %>
     <%= f.input :total_amount %>
-    <%= f.submit %>
+    <%= f.submit "SUBMIT", class: "action-btn" %>
   <% end %>
 <% end %>
+</div>
 </div>

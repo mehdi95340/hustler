@@ -18,10 +18,13 @@ class ExpensesController < ApplicationController
   # GET /budgets/:budget_id/expenses/new
   def new
     @budget = Budget.find(params[:budget_id])
-    @goal_achieved = params[:goal_achieved]
-    @goal_id = params[:goal_id]
-    @goal = Goal.find(params[:goal_id])
-    @expense = Expense.new(amount: @goal.target_amount, description: @goal.title)
+    @expense = Expense.new
+    if params[:goal_id]
+      @goal_achieved = params[:goal_achieved]
+      @goal_id = params[:goal_id]
+      @goal = Goal.find(params[:goal_id])
+      @expense = Expense.new(amount: @goal.target_amount, description: @goal.title)
+    end
 
   end
 
