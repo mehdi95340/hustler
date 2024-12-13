@@ -121,3 +121,11 @@
   z-index: 1;
   pointer-events: none;
 }
+
+.header{
+  display: flex;
+
+    width: 100%;
+    justify-content: center;
+    margin-top: 1.4rem;
+}
