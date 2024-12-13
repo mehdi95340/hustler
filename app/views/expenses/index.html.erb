@@ -1,27 +1,29 @@
 <%= turbo_frame_tag :expenses do %>
+  <h1 class=header>EXPENSES</h1>
   <div class="container h-25">
     <!-- Header Section -->
     <div class="container h-100">
-  <div class="show-wrapper" style="width: 350px; margin: 0 auto;"> <!-- Constrained width -->
-    <div class="flame-background"></div> <!-- Flame GIF -->
-    <div class="flame-show">
-        <p class="text-center">FEEDBACK WITH CACTUS JACK:</p>
-        <p class="blue-flame"><%= @feedback %></p>
+      <div class="show-wrapper" style="width: 350px; margin: 0 auto;"> <!-- Constrained width -->
+        <div class="flame-background"></div>
+ <!-- Flame GIF -->
+        <div class="flame-show">
+          <p class="text-center">FEEDBACK WITH CACTUS JACK:</p>
+          <p class="blue-flame"><%= @feedback %></p>
         </div>
-        </div>
-        <div class="show">
-      <div class="price-container">
-      <h3 class="text-right mt-3">THIS <%= @budget.month.upcase %>,</h1>
-       <h1 class="text-left mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
-       <% if @budget.remaining_budget > 0 %>
-       <p>You've got $<%= @budget.remaining_budget  %> left</p>
-       <% else %>
-       <h1>CONGRATS HOMIE! you're in debt</h1>
-       <% end %>
-
-<br>
       </div>
-      <%= pie_chart @budget.expenses
+      <div class="show">
+        <div class="price-container">
+          <h3 class="text-right mt-3">THIS <%= @budget.month.upcase %>,</h1>
+          <h1 class="text-left mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
+          <% if @budget.remaining_budget > 0 %>
+            <p>You've got $<%= @budget.remaining_budget  %> left</p>
+          <% else %>
+            <h1>CONGRATS HOMIE! you're in debt</h1>
+          <% end %>
+
+          <br>
+        </div>
+        <%= pie_chart @budget.expenses
                .joins(:category)
                .group('categories.name')
                .sum(:amount)
@@ -44,17 +46,17 @@
                  }
                } %>
 
-      <div class="expenses-category">
-        <h2>EXPENSES BY CATEGORY:</h2>
-        <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <% @budget.expenses_by_category.each_with_index do |(category, total), index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                <p><%= category.name %>: <%= number_to_currency(total) %></p>
-              </div>
-            <% end %>
+        <div class="expenses-category">
+          <h2>EXPENSES BY CATEGORY:</h2>
+          <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% @budget.expenses_by_category.each_with_index do |(category, total), index| %>
+                <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <p><%= category.name %>: <%= number_to_currency(total) %></p>
+                </div>
+              <% end %>
+            </div>
           </div>
-        </div>
 
         </div>
       </div>
@@ -66,25 +68,25 @@
     <% @expenses.each do |expense| %>
       <div class="travis-card">
         <%= link_to expense_path(expense) do %>
-        <div class="travis">
-          <div class="travis-info">
-            <p><%= expense.category.name %></p>
-            <h2 class="my-3"><%= number_to_currency(expense.amount) %></h2>
-            <p><%= expense.description %></p>
-          </div>
-          <div class="travis-buttons">
-            <!-- Edit Button -->
-            <%= link_to edit_expense_path(expense), class: "travis-button edit" do %>
-              <i class="fa-solid fa-pen-to-square"></i>
-            <% end %>
-            <!-- Delete Button -->
-            <%= link_to expense_path(expense),
+          <div class="travis">
+            <div class="travis-info">
+              <p><%= expense.category.name %></p>
+              <h2 class="my-3"><%= number_to_currency(expense.amount) %></h2>
+              <p><%= expense.description %></p>
+            </div>
+            <div class="travis-buttons">
+              <!-- Edit Button -->
+              <%= link_to edit_expense_path(expense), class: "travis-button edit" do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+              <!-- Delete Button -->
+              <%= link_to expense_path(expense),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                     class: "travis-button delete" do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     <% end %>
