@@ -65,6 +65,7 @@
   <% if @expenses.any? %>
     <% @expenses.each do |expense| %>
       <div class="travis-card">
+        <%= link_to expense_path(expense) do %>
         <div class="travis">
           <div class="travis-info">
             <p><%= expense.category.name %></p>
@@ -84,6 +85,7 @@
             <% end %>
           </div>
         </div>
+        <% end %>
       </div>
     <% end %>
   <% else %>
