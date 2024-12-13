@@ -1,19 +1,25 @@
 <%= turbo_frame_tag :expenses do %>
   <div class="container h-25">
     <!-- Header Section -->
-      <h1 class="text-center mt-3"><%= @budget.month.upcase %></h1>
-    <div class="show">
+    <div class="container h-100">
+  <div class="show-wrapper" style="width: 350px; margin: 0 auto;"> <!-- Constrained width -->
+    <div class="flame-background"></div> <!-- Flame GIF -->
+    <div class="flame-show">
+        <p class="text-center">FEEDBACK WITH CACTUS JACK:</p>
+        <p class="blue-flame"><%= @feedback %></p>
+        </div>
+        </div>
+        <div class="show">
       <div class="price-container">
-       <h1 class="text-center mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
+      <h3 class="text-right mt-3">THIS <%= @budget.month.upcase %>,</h1>
+       <h1 class="text-left mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
        <% if @budget.remaining_budget > 0 %>
        <p>You've got $<%= @budget.remaining_budget  %> left</p>
        <% else %>
-       <p>CONGRATS HOMIE! you're in debt</p>
+       <h1>CONGRATS HOMIE! you're in debt</h1>
        <% end %>
 
 <br>
-        <p>HUSTLER AI:</p>
-        <p><%= @feedback %></p>
       </div>
       <%= pie_chart @budget.expenses
                .joins(:category)
@@ -48,6 +54,7 @@
               </div>
             <% end %>
           </div>
+        </div>
 
         </div>
       </div>

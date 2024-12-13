@@ -23,7 +23,7 @@
 }
 
 .container {
-  position: relative; 
+  position: relative;
   width: 100%;
   height: auto;
   background-size: cover;
@@ -67,9 +67,9 @@
   z-index: 2;
 }
 
-/* Translucent card */
 .flame-show {
   position: relative;
+  margin-top: 90px;
   padding: 20px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -84,7 +84,6 @@
   z-index: 2;
 }
 
-/* Flame GIF */
 .flame-background {
   position: absolute;
   bottom: 0;

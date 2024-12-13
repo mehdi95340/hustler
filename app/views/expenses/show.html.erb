@@ -1,15 +1,15 @@
 <%= turbo_frame_tag :expenses do %>
 <div class="container h-100">
-  <h1>EXPENSE DETAILS</h1>
-  <div class="show-wrapper">
+  <div class="show-wrapper" style="width: 350px; margin: 0 auto;"> <!-- Constrained width -->
     <div class="flame-background"></div> <!-- Flame GIF -->
     <div class="flame-show">
-    <div class="">
-      <p><strong>Amount:</strong> <%= @expense.amount %></p>
+      <p><strong>Amount:</strong> $<%= @expense.amount %></p>
       <p><strong>DESCRIPTION:</strong> <%= @expense.description %></p>
       <p><strong>CATEGORY:</strong> <%= @expense.category.name %></p>
-      <p><strong>HUSTLER AI:</strong> <%= @ai_feedback %></p>
-      </div>
+        <h3 class="blue-flame"><strong>TRAVIS:</strong><h3>
+        <br>
+      <p class="blue-flame">
+        <span><%= @ai_feedback %></span>      </p>
     </div>
   </div>
 </div>
