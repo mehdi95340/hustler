@@ -18,9 +18,11 @@ class ExpensesController < ApplicationController
   # GET /budgets/:budget_id/expenses/new
   def new
     @budget = Budget.find(params[:budget_id])
-    @expense = Expense.new
     @goal_achieved = params[:goal_achieved]
     @goal_id = params[:goal_id]
+    @goal = Goal.find(params[:goal_id])
+    @expense = Expense.new(amount: @goal.target_amount, description: @goal.title)
+
   end
 
   # GET /expenses/1/edit
@@ -37,12 +39,12 @@ class ExpensesController < ApplicationController
     @expense.budget = @budget
     @expense.date = Date.today
     @expense.category = @category if @category
-    if params[:goal_id]
+    if params[:goal_id] && @expense.save!
       @goal = Goal.find(params[:goal_id])
       @goal.achieved = params[:goal_achieved]
       @goal.save!
-    end
-    if @expense.save!
+      redirect_to expense_path(@expense, goal_achieved: true), notice: "🤑"
+    elsif @expense.save!
       redirect_to expense_path(@expense), notice: "🤑"
     else
       render :new, status: :unprocessable_entity
