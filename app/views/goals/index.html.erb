@@ -18,7 +18,7 @@
             </div>
             <br>
             <p><i class="fa-solid fa-bullseye"></i>   <%= goal.target_amount %></p>
-            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date %></p>
+            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date.strftime("%B %d, %Y") %></p>
           <% elsif goal.achieved %>
             <div class="glitch">
             <h4 class="electric-blue-flame">
@@ -32,8 +32,8 @@
               <h1 class="target-progress"><%= goal.target_progress.round(0) %>%</h1>
             </strong>
             <br>
-            <p><i class="fa-solid fa-bullseye"></i>   <%= goal.target_amount %></p>
-            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date %></p>
+            <p><i class="fa-solid fa-bullseye"></i>   $<%= goal.target_amount %></p>
+            <p><i class="fa-solid fa-calendar-days"></i>   <%= goal.due_date.strftime("%B %d, %Y") %></p>
           <% end %>
           </div>
       </div>

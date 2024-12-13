@@ -8,6 +8,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.pg-container {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  margin-top: 36px;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
 .actions {
   display: flex;
   flex-direction: column;
