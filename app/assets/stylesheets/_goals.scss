@@ -24,12 +24,17 @@
   align-items: center;
 }
 
-h4, .blue-flame {
+.blue-flame {
+  font-family: 'Orbitron';
   font-size: 2rem; // Adjust size as needed
   color: rgb(197, 245, 1); // Base blue color
   text-transform: uppercase; // Ensure the text is uppercase
   text-shadow: 0 0 5px rgb(255, 204, 108), 0 0 10px rgb(245, 34, 34), 0 0 20px rgb(225, 45, 0), 0 0 40px #0ff, 0 0 80px #0ff;
   animation: electric-blue-glow 1.5s infinite alternate;
+
+  h4 {
+    font-family: 'Orbitron';
+  }
 
   @keyframes electric-blue-glow {
     0% {
