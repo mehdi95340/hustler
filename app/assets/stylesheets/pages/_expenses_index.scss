@@ -141,3 +141,82 @@
   transition: all 0.3s ease-in-out;
   text-decoration: none;
 }
+._404-text {
+  margin-top: 1.25em; /* Adjust as needed */
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem; /* Base font size */
+  font-weight: 200;
+  letter-spacing: 0.5rem; /* Adjust spacing */
+  color: #ffffff; /* Text color */
+  text-shadow: 0px 0.125em 0.25em rgba(0, 0, 0, 0.5); /* Proportional shadow */
+  font-family: 'Orbitron', sans-serif;
+  position: relative; /* Required for pseudo-elements */
+  z-index: 1000;
+
+  &:before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0.125em; /* Adjust for a slight offset */
+    color: #193e41;
+    text-shadow: -0.0625em 0 #0ff; /* Proportional shadow */
+    clip: rect(0, 100em, 0, 0); /* Proportional clipping */
+    animation: glitch-1 1s linear alternate-reverse infinite;
+  }
+
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: -0.125em; /* Adjust for a slight offset */
+    color: darken(#01A8FF, 33%);
+    text-shadow: 0.1875em 0 #FF28D7; /* Proportional shadow */
+    clip: rect(0, 100em, 0, 0); /* Proportional clipping */
+    animation: glitch-2 0.6s linear alternate-reverse infinite 0.2s;
+  }
+}
+
+/* Glitch 1 animation */
+@keyframes glitch-1 {
+  0% {
+    clip: rect(2em, 100em, 3.5em, 0); /* Proportional to font size */
+  }
+  15% {
+    clip: rect(6em, 100em, 6.05em, 0);
+  }
+  50% {
+    clip: rect(4.5em, 100em, 4.8em, 0);
+  }
+  75% {
+    clip: rect(6em, 100em, 8em, 0);
+  }
+  87% {
+    clip: rect(3.5em, 100em, 5em, 0);
+  }
+  100% {
+    clip: rect(6em, 100em, 6em, 0);
+  }
+}
+
+/* Glitch 2 animation */
+@keyframes glitch-2 {
+  0% {
+    clip: rect(1em, 100em, 4em, 0); /* Proportional to font size */
+  }
+  15% {
+    clip: rect(5em, 100em, 5.25em, 0);
+  }
+  50% {
+    clip: rect(5em, 100em, 4.75em, 0);
+  }
+  75% {
+    clip: rect(3em, 100em, 3em, 0);
+  }
+  87% {
+    clip: rect(7.25em, 100em, 8em, 0);
+  }
+  100% {
+    clip: rect(9.25em, 100em, 9.25em, 0);
+  }
+}

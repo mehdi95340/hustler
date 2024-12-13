@@ -12,7 +12,7 @@
         <div class="show">
       <div class="price-container">
       <h3 class="text-right mt-3">THIS <%= @budget.month.upcase %>,</h1>
-       <h1 class="text-left mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
+       <h1 class="electric-blue-flame-2 mb-3"> YOU'VE BLOWN: <span>$</span><%= number_to_currency(@expenses.sum { |expense| expense.amount.to_i }, unit: "") %></h1>
        <% if @budget.remaining_budget > 0 %>
        <p>You've got $<%= @budget.remaining_budget  %> left</p>
        <% else %>

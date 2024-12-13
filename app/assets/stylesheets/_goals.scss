@@ -62,3 +62,16 @@
   text-transform: uppercase;
   text-shadow: 0 0 5px rgb(220, 3, 3);
 }
+
+.electric-blue-flame-2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: rgb(208, 209, 241);
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgb(255, 204, 108), 0 0 10px rgb(245, 34, 34), 0 0 20px rgb(225, 45, 0), 0 0 40px rgb(255, 145, 0), 0 0 80px rgb(255, 200, 0);
+  animation: electric-yellow-glow 1.5s infinite alternate;
+
+  h4 {
+    font-family: 'Orbitron';
+  }
+}
